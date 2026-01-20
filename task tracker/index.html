@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Трекер привычек</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Трекер привычек</h1>
+    <form id="addHabitForm">
+      <input type="text" id="habitName" placeholder="Название привычки" maxlength="40" required />
+      <select id="habitGroup">
+        <option value="Здоровье">Здоровье</option>
+        <option value="Образование">Образование</option>
+        <option value="Работа">Работа</option>
+        <option value="Другое">Другое</option>
+      </select>
+      <select id="habitGoal">
+        <option value="daily">Каждый день</option>
+        <option value="3x">3 раза в неделю</option>
+        <option value="weekends">Только по выходным</option>
+      </select>
+      <button type="submit">Добавить</button>
+      <div id="formError" class="error"></div>
+    </form>
+
+<div id="activeHabits">
+
+  <h2>Активные привычки</h2>
+
+  <div id="habitsContainer"></div>
+
+</div>
+
+<div id="archiveSection" style="display:none;">
+
+  <h2>Архив</h2>
+
+  <div id="archiveContainer"></div>
+
+  <button id="toggleArchive" class="btn" style="margin-top:10px;">Показать архив</button>
+
+</div>
+
+    <div id="yearCalendar">
+
+      <h2>Годовой обзор</h2>
+
+      <div id="calendarGrid"></div>
+
+    </div>
+
+  
+
+  </div>
+
+  
+
+  <script src="app.js"></script>
+
+</body>
+
+</html>
