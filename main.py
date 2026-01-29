@@ -1,5 +1,7 @@
 # python -m venv .env
 # .\.env\Scripts\activate
+# from fontTools.varLib.instancer.names import pruningUnusedNames
+from gc import collect
 
 # name_new = "Иван"
 # name = "Антон"
@@ -465,3 +467,150 @@
 #     i += 1
 # else:
 #     print("Цикл окончен, i =", i)
+
+# n = int(input("Количество символов: "))
+# sim = input("Тип символа: ")
+# orient = input("0 - горизонтально\n1 - Вертикально: ")
+# i = 0
+# while i < n:
+#     if orient == "0":
+#         print(sim, end='')
+#     elif orient == "1":
+#         print(sim)
+#     else:
+#         print("Символ не предусмотренн")
+#         break
+#     i += 1
+
+# kol = int(input("Количество чисел последовательности:"))
+# n = float(input("Введите число: "))
+# summa = n
+# minim = n
+# maxim = n
+# i = 1
+# while i < kol:
+#     n = float(input("Введите число: "))
+#     summa += n
+#     if minim > n:
+#         minim = n
+#     if maxim < n:
+#         maxim = n
+#     i +=1
+#
+# print("Среднее арифметическое",summa / kol)
+# print("Минимальное", minim)
+# print("Максимальное", maxim)
+
+# i = 1
+# while i < 5:
+#     print("Внешний цикл. i = ",i)
+#     j = 1
+#     while j < 5:
+#         print("Вложенный цикл. j =", j)
+#         j += 1
+#     i += 1
+
+# i = 1
+# while i < 10:
+#     j = 1
+#     while j < 10:
+#         print(i, "*", j, "=", i * j, end="\t\t")
+#         j += 1
+#     print()
+#     i += 1
+
+# symb = input("ВВедите символ: ")
+# i = 0
+# while i < 3:
+#     j = 0
+#     while j < 6:
+#         print("^", end="")
+#         j += 1
+#     print()
+#     i += 1
+
+
+# i = 0
+# while i < 7:
+#     j = 0
+#     while j < 20:
+#         if i % 2 ==0:
+#             print("*", end="")
+#         else:
+#             print("^", end="")
+#         j += 1
+#     print()
+#     i += 1
+
+# for(let i = 0;i < 5; i++){
+#     console.log(i)
+# }
+
+# for element in collection:
+#     print(element)
+
+# for i in "Hello":
+#     print(i)
+
+# for i in 5, 6, 7, 8, 9:
+#     print(i)
+
+# range(start, stop, step)
+# print(range(2,5))
+
+# for i in range(2, 100, 4):
+#     print(i, end=' ')
+
+# for i in range(-200, -100, 4):
+#     print(i, end=' ')
+
+# a = int(input("Введите целое число: "))
+# for i in range(1, a + 1, 1):
+#     if a % i ==0:
+#         print(i, end=" ")
+
+# for i in range(10, 1000):
+#     if i % 100 == i // 100:
+#         print(i, end=" ")
+
+# for i in range(5):
+#     print(i, end=' ')
+#     if i == 1:
+#         break
+# else:
+#     print("Конец цикла")
+
+# for i in range(3):
+#     print("+++")
+#     for j in range(2):
+#         print('---')
+
+# w = int(input("Ширина: "))
+# h = int(input("Высота: "))
+#
+# for i in range(h):
+#     for j in range(w):
+#         print("*",end="")
+#     print()
+
+# w = int(input("Ширина: "))
+# h = int(input("Высота: "))
+# w = 16
+# h = 4
+#
+# for i in range(h):
+#     for j in range(w):
+#         if i == 0 or i == h - 1 or j == 0 or j == w - 1:
+#             print("*", end='')
+#         else:
+#             print(' ', end='')
+#     print()
+
+# n = [i for i in range(6)]
+# print(n)
+
+# n = [i for i in range(6) if i % 2 == 0]
+# print(n)
+
+n = [i * 2 for i in "Hello"]
+print(n)
