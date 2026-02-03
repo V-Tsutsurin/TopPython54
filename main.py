@@ -1,7 +1,8 @@
 # python -m venv .env
 # .\.env\Scripts\activate
 # from fontTools.varLib.instancer.names import pruningUnusedNames
-from gc import collect
+# from gc import collect
+# from turtledemo.penrose import start
 
 # name_new = "Иван"
 # name = "Антон"
@@ -612,5 +613,182 @@ from gc import collect
 # n = [i for i in range(6) if i % 2 == 0]
 # print(n)
 
-n = [i * 2 for i in "Hello"]
-print(n)
+# n = [i * 2 for i in "Hello"]
+# print(n)
+
+# n = [i for i in "Hello"]
+# print(n)
+
+# n = [5, 6, [7, 8, 9], "Hello", 1, 2, True]
+# print(n)
+# print(type(n))
+# print(n[0])
+# print(n[2][0])
+# print(n[3])
+# print(n[3][1])
+# print(n[-2])
+
+# n[1] = 256
+# n[3] += "100"
+# n[-7] = 45
+# print(n)
+# print(len(n))
+
+# s = [1, 2, 3]
+# print([5] * 5)
+# print(s * 5)
+# b = list('HELLO')
+# print(b)
+
+# n = list(range(2, 10, 2))
+# n = [2, 4, 6, 8]
+# n2 = [2, 4, 6, 8]
+# n = "HELLO"
+# n2 = "hello"
+
+# print(n)
+# print(id(n))
+# print(n2)
+# print(id(n2))
+#
+# if n == n2:
+#     print("Списки равны")
+# else:
+#     print("Списки разные")
+#
+# if n is n2:
+#     print("Списки подобны")
+# else:
+#     print("Списки не подобны")
+
+# [выражение for переменная in последовательность]
+
+# n = 5
+#
+# a = [i for i in range(1, n + 1)]
+# print(a)
+
+# n = 5
+#
+# for i in range(1, n + 1):
+#     print(i ** 2, end=" ")
+
+# a = [1, 2, 3]
+# b = [4, 5]
+# c = a + b
+# print(c)
+# d = b * 3
+# print(d)
+
+# a = [0] * int(input("Введите количество элементов списка: "))
+# print(a)
+# for i  in range(len(a)):
+#     a[i] = int(input("--> "))
+# print(a)
+
+# a = [int(input("-> ")) for  i in range(int(input("n = ")))]
+# print(a)
+
+# print([int(input("-> ")) for  i in range(int(input("n = ")))])
+
+# n = [2, 4, 6, 8, 2, 4, 6, 8]
+#
+# for i in range(len(n)):
+#     print(n[i], end=" ")
+#
+# print()
+# for elem in n:
+#     print(elem, end=" ")
+
+
+# a = [int(input("-> ")) for  i in range(int(input("n = ")))]
+# n = [-3, 9, -5, -1]
+#
+# b = 0
+# for i in n:
+#     if i < 0:
+#         b += i
+# print(b)
+#
+# b = 0
+# for i in range(len(n)):
+#     if n[i] < 0:
+#         b += n[i]
+# print(b)
+
+# n = list(range(21, 41))
+# print(n)
+# s = k = 0
+# for i in range(len(n)):
+#     if n[i] % 2 == 0:
+#         k += 1
+#     else:
+#         s += n[i]
+
+# for i in n:
+#     if i % 2 == 0:
+#         k += 1
+#     else:
+#         s += i
+#
+# print("Количество четных элементов списка: ", k)
+# print("Сумма нечетных элементов: ", s)
+
+# a = [int(input("-> ")) for i in range(int(input("n = ")))]
+# s = k = 0
+# for i in range(len(a)):
+#     if a[i] != 0:
+#         s += a[i]
+#         k += 1
+# print(s / k)
+
+# a = [7, 9, 2, 1, 17, 45]
+# a[0], a[-1] = a[-1], a[0]
+# print(a)
+
+# срез списка[start: stop: step]
+
+# s = [5, 6, 7, 8, 9, 33]
+# # print(s[1:4])
+# # print(s[2:])
+# # print(s[:2])
+# # print(s[-1:0:-1])
+# # print(s[1:50])
+# print(s[6:7])
+
+# a = [1, 2, 3, 4, 5, 6, 7]
+# print(a[:])
+# print(a[::-1])
+# print(a[::2])
+# print(a[1::2])
+# print(a[-1:])
+# print(a[3:4])
+# print(a[4:])
+# # print(a[-3:1:-1])
+# print(a[-3:-6:-1])
+# print(a[2:5])
+
+# s = [5, 9, 3, 7, 1, 8]
+# s[1:3] = [0, 0, 0, 0]
+# print(s)
+# # s[1:3] = "HELLO"
+# # print(s)
+# # s[2] = 20
+# print(len(s))
+# s[100:] = [9, 9, 8, 6, 5, 3, 21, 1, 3]
+# print(s)
+# print(len(s))
+
+# Методы списков
+
+
+s = [5, 9, 3, 7, 1, 8]
+
+s.append(99)  # Добавляет один элемент в конец списка
+print(s)
+s.extend([1, 2, 3]) #добавляет список в конец основного списка
+print(s)
+s.extend("HELLO")
+print(s)
+s.insert(1, 100) #добавляет элемент по индексу(первый параметр), с заданным значеным(второй параметр)
+print(s)
