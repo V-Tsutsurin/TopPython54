@@ -782,13 +782,185 @@
 # Методы списков
 
 
-s = [5, 9, 3, 7, 1, 8]
+# s = [5, 9, 3, 7, 1, 8]
+#
+# s.append(99)  # Добавляет один элемент в конец списка
+# print(s)
+# s.extend([1, 2, 3]) #добавляет список в конец основного списка
+# print(s)
+# s.extend("HELLO")
+# print(s)
+# s.insert(1, 100) #добавляет элемент по индексу(первый параметр), с заданным значеным(второй параметр)
+# print(s)
 
-s.append(99)  # Добавляет один элемент в конец списка
-print(s)
-s.extend([1, 2, 3]) #добавляет список в конец основного списка
-print(s)
-s.extend("HELLO")
-print(s)
-s.insert(1, 100) #добавляет элемент по индексу(первый параметр), с заданным значеным(второй параметр)
-print(s)
+# s = []
+# n = int(input("n = "))
+# for num in range(n):
+#     x = int(input("--> "))
+#     s.append(x)
+# print(s)
+
+
+# s = []
+# n = int(input("n = "))
+# for num in range(n):
+#     x = int(input("--> "))
+#     if x % 3 ==0:
+#         s.append(x)
+#     else:
+#         print(x, "не делится на 3")
+# print(s)
+
+# a = [5, 3, 3, 7, 8, 3, 9, 0, 3, 3, 7, 8, 3, 9, 0]
+# b = [6, 46, 8, 56, 3, 3, 9, 3, 3, 3]
+# c = []
+# print('a = ', a)
+# print('b = ', b)
+# for i in a:
+#     for j in b:
+#         if i in c:
+#             continue
+#         if i == j:
+#             c.append(i)
+#             break
+# print(c)
+
+# a = [1, 2, 3]
+# b = [11, 22, 33, 7, 8, 9]
+# c = []
+# print('a = ', a)
+# print('b = ', b)
+
+# for i in range(len(a)):
+#     c.append(a[i])
+#     c.append(b[i])
+# print(c)
+
+# i = 0
+# while i < len(a):
+#     c.append(a[i])
+#     c.append(b[i])
+#     i += 1
+# print(c)
+#
+#
+# a = [1, 2, 3]
+# b = [11, 22, 33]
+# c = []
+# print('a = ', a)
+# print('b = ', b)
+#
+# if len(b) > len(a):
+#     for i in range(len(a)): # 0-3
+#         c.append(a[i])
+#         c.append(b[i])
+#     for i in range(len(a), len(b)): # 3- конца
+#         c.append(b[i])
+# else:
+#     for i in range(len(b)):
+#         c.append(a[i])
+#         c.append(b[i])
+#     for i in range(len(b), len(a)):
+#         c.append(a[i])
+# print(c)
+
+# s = [5, 9, 3, 7, 1, 0]
+# s[3:] =[]
+# print(s)
+# s.remove(9) # удаляет элемент по значению
+# print(s)
+# last =  s.pop(1) # удаляет и возвращает элемент по индексу, без параметра удаляет последний
+# print(s)
+# print(last)
+# s.clear() #очищает список удаляя все элементы
+# print(s)
+# del s[2::2]
+# print(s)
+
+# s = [int(input("-> ")) for i in range(int(input("n = ")))]
+# k = int(input("k = "))
+# # s.pop(k)
+#
+# del s[k]
+# print(s)
+
+# s = [5, 9, 3, 7, 1, 0, 2, 8, 3, 8, 3]
+# num = s.count(1) # количество заданных значений в списке
+# print(num)
+# print(s)
+# # ind = s.index(3)
+# ind = s.index(3, 9 )
+#
+# print(ind)
+
+# a = [1, 2, 3]
+# b = a
+# print('a = ', a)
+# print('b = ', b)
+# a.append(20)
+# print('a = ', a)
+# print('b = ', b)
+# a[0] = 9
+# b[3] = 55
+# print('a = ', a)
+# print('b = ', b)
+# print('a = ', id(a))
+# print('b = ', id(b))
+
+# a = [1, 2, 3]
+# b = a.copy()
+# print('a = ', a)
+# print('b = ', b)
+# a.append(20)
+# print('a = ', a)
+# print('b = ', b)
+# a[0] = 9
+# b[2] = 55
+# print('a = ', a)
+# print('b = ', b)
+# print('a = ', id(a))
+# print('b = ', id(b))
+
+# s = [5, 7, 9, 3, 5, 3, 4, 7, 6, 9, 2, 2, 7, 7, 7, 0, 0, 4, 4, 6, 7]
+# print(s)
+# # s.reverse() #Переворачивает список
+# # s.sort(reverse=True) # Сортирует список в порядке возрастания, изменяя список, reverse=True - сортировака в порядке убывания
+# # print(s)
+#
+# a = sorted(s, reverse=True) # Сортирует список в порядке возрастания, Не изменяя список
+# print(a)
+# print(s)
+
+# s2 = ["Дима", "Настя", "Маша", "Яна", "Амин", "Вася"]
+# # s2.sort(key=len, reverse=True)
+# s2.sort()
+# print(s2)
+
+# import random
+#
+# # print(random.random())
+# # print(random.randint(10, 15))
+# print(random.randrange(0, 10, 2))
+
+# from random import randint, randrange
+# print(randint(10, 15))
+# print(randrange(0, 10, 2))
+
+
+import random as r
+# print(r.randint(10, 15))
+# print(r.randrange(0, 10, 2))
+# s2 = ["Дима", "Настя", "Маша", "Яна", "Амин", "Вася"]
+# print(r.choice(s2))
+
+s = [5, 7, 9, 3, 5, 3, 4, 7, 6, 9, 2, 2, 7, 7, 7, 0, 0, 4, 4, 6, 7]
+# print(r.choice(s))
+# print(r.choices(s, k=5))
+# r.shuffle(s)
+# print(s)
+
+# print(r.uniform(10.5, 25.9))
+# print(round(r.uniform(10.5, 25.9), 2))
+
+mas = [r.randint(0, 100) for i in range(10)]
+print(mas)
