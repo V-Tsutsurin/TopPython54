@@ -936,7 +936,7 @@
 # s2.sort()
 # print(s2)
 
-# import random
+import random
 #
 # # print(random.random())
 # # print(random.randint(10, 15))
@@ -948,12 +948,13 @@
 
 
 import random as r
+
 # print(r.randint(10, 15))
 # print(r.randrange(0, 10, 2))
 # s2 = ["Дима", "Настя", "Маша", "Яна", "Амин", "Вася"]
 # print(r.choice(s2))
 
-s = [5, 7, 9, 3, 5, 3, 4, 7, 6, 9, 2, 2, 7, 7, 7, 0, 0, 4, 4, 6, 7]
+# s = [5, 7, 9, 3, 5, 3, 4, 7, 6, 9, 2, 2, 7, 7, 7, 0, 0, 4, 4, 6, 7]
 # print(r.choice(s))
 # print(r.choices(s, k=5))
 # r.shuffle(s)
@@ -962,5 +963,281 @@ s = [5, 7, 9, 3, 5, 3, 4, 7, 6, 9, 2, 2, 7, 7, 7, 0, 0, 4, 4, 6, 7]
 # print(r.uniform(10.5, 25.9))
 # print(round(r.uniform(10.5, 25.9), 2))
 
-mas = [r.randint(0, 100) for i in range(10)]
-print(mas)
+# mas = [r.randint(0, 100) for i in range(10)]
+# print(mas)
+
+# lst = [5, 4, 8, 9, 5, 3]
+# # print(len(lst))
+# # print(max(lst))
+# # print(min(lst))
+# print(sum(lst))
+#
+# sum_list = [1, 2, 3]
+# print(min(sum_list))
+# print(sum(lst))
+
+# x = [r.randint(0, 100) for i in range(0, 10)]
+# print(x)
+# m = max(x)
+# print("Max", m)
+# x.remove(m)
+# x.insert(0, m)
+# print(x)
+
+
+# x = [r.randint(-100, 100) for i in range(0, 10)]
+# print(x)
+# x.sort(reverse=True)
+# print(x)
+
+# x = [r.randint(0, 100) for i in range(0, 10)]
+# print(x)
+# m = min(x)
+# print("Min", m)
+# b = x.index(m)
+# print("index", b)
+# del x[:b]
+# print(x)
+
+# x = list('1a2b3c4d5e6f')
+# print(x)
+# print('a' in x)
+# print('x' in x)
+# print('a' not in x)
+# print('x' not in x)
+
+# lst = []
+# # if len(lst) == 0:
+# #     print("Список пустой")
+# if not lst:
+#     print("Список пустой")
+
+# n1 = int(input("Размер cписка 1: "))
+# n2 = int(input("Размер cписка 2: "))
+# a = [r.randint(0, 10) for i in range(n1)]
+# b = [r.randint(0, 10) for i in range(n2)]
+# print("a = ", a)
+# print("b = ", b)
+# c = a + b
+# print("c = ", c)
+
+# c = []
+# print('Список без повторений: ')
+# for i in a:
+#     if i not in c:
+#         c.append(i)
+# for i in b:
+#     if i not in c:
+#         c.append(i)
+# print('Список без повторений: ', c)
+
+# c = []
+# for i in a:
+#     if i in b and i not in c:
+#         c.append(i)
+# print('Общие эл-ты: ', c)
+
+# c = [min(a), min(b), max(a), max(b)]
+# print(c)
+
+# m = [
+#     [1, 2, 3, 4],
+#     [5, 6, 7, 8],
+#     [9, 10, 11, 12]
+# ]
+#
+# # print(m)
+# # print(len(m))
+# # print(len(m[1]))
+# # print(m[0][1])
+# for row in range(len(m)):
+#     for col in range(len(m[row])):
+#         print(m[row][col], end="\t\t")
+#     print()
+# print()
+#
+# for row in m:
+#     for x in row:
+#         print(x, end="\t\t")
+#     print()
+
+# a = [1,2,3]
+# print(a)
+# for i in a:
+#     print(i, end='\t\t')
+
+# a = [[1, 2], [3, 4], [5, 6], [7, 8]]
+# print(a)
+#
+# for x, y in a:
+#     print(x, "+", y, "=", x + y)
+
+# m = [[r.randint(0, 10) for i in range(8)] for y in range(4)]
+# for row in m:
+#     for x in row:
+#         print(x, end='\t\t')
+#     print()
+#
+#     # print(row, end='\t\t')
+# size = int(input("Размер поля: "))
+# symbol = int(input("Кол-во символов: "))
+# size = 5
+# symbol = 3
+#
+# i = 0
+# while i < size:
+#     j = 0
+#     while j < symbol:
+#         n = 0
+#         while n < size:
+#             m = 0
+#             while m < symbol:
+#                 if (i + n) % 2 ==0:
+#                     print("+", end='')
+#                 else:
+#                     print(' ', end='')
+#                 m +=1
+#             n +=1
+#         print()
+#         j += 1
+#     i += 1
+
+import math
+
+# num1 = math.sqrt(16)
+# num2 = math.ceil(3.1)
+# num3 = math.floor(3.8)
+#
+# print(num1)
+# print(num2)
+# print(num3)
+# print(dir(math))
+# print(math.pi)
+
+# rd = int(input("Введите радиус: "))
+# print("Длинна окружности: ", round(2 * math.pi * rd, 2))
+
+import time
+from time import localtime
+
+# seconds = time.time()
+# print("Секунд с начала эпохи", seconds)
+# local_time = time.ctime(seconds)
+# print(local_time)
+# print(2026*365*24*60*60)
+# res = time.localtime()
+# print("Местное время", res)
+# print(res.tm_mday, ":", res.tm_mon,":", res.tm_year, sep='')
+# print(time.strftime("TODAY IS %d %B %y"))
+# print(time.strftime("%m/%d/%Y, %H:%M:%S",time.localtime(8845696545)))
+
+# pause = 5
+# print("START")
+# time.sleep(pause)
+# print("STOP, seconds: ", pause)
+
+# text = input("Введите напоминание: ")
+# local_time = float(input("Через сколько минут: "))
+# local_time = local_time * 60
+# time.sleep(local_time)
+# print(text)
+
+# start = time.time()
+# time.sleep(5)
+# finish = time.time()
+# res = finish - start
+# print(res,"sec")
+#
+# start = time.monotonic()
+# time.sleep(5)
+# res = time.monotonic() - start
+# print(res,"sec")
+
+import locale
+
+locale.setlocale(locale.LC_ALL, "ru")
+
+
+# print(time.strftime("Сегодня %d %B %y"))
+# print(time.strftime("%m/%d/%Y, %H:%M:%S",time.localtime(8845696545)))
+
+# print()
+
+# def hello(name):
+#     print("HELLO:", name)
+#
+#
+# hello("Васька")
+# hello("Мурзик")
+
+# def get_sum(a, b):
+#     print(a + b)
+#
+#
+# get_sum(2, 3)
+# x = 5
+# y = 6
+# get_sum(x, y)
+# n = 51
+# m = 68
+# get_sum(n, m)
+# get_sum("asd", "wqeqwe")
+# get_sum(2.5, 9.7)
+
+# def symbol(a , b , c):
+#     for i in range(a):
+#         if i % 2 == 0:
+#             print(b, end='')
+#         else:
+#             print(c, end='')
+#     print()
+#
+# symbol(9, "=", "+")
+# symbol(9, 0, 1)
+
+# def get_sum(a, b):
+#     # print(a + b)
+#     return a + b
+#
+#
+# # get_sum(1,3)
+#
+# res = get_sum(2, 5)
+# print(res)
+# print(get_sum(22, 51))
+
+# def maximum(one, two):
+#     if one > two:
+#         return one
+#     else:
+#         return two
+#
+# print(maximum(29, 19))
+
+# x = int(input("a: "))
+# y = int(input("b: "))
+#
+# def rs(a, b):
+#     if a > b:
+#         return a - b
+#     else:
+#         return a + b
+#
+# print(rs(x, y))
+#
+# def cube(a):
+#     return a ** 3
+#
+# for i in range(1, 11):
+#     print(i, "в кубе = ", cube(i))
+
+def fib(n):
+    a = 0
+    b = 1
+    while a < n:
+        print(a, end=" ")
+        c = a + b
+        a = b
+        b = c
+
+fib(15)
