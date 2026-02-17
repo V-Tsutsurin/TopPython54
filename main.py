@@ -1157,7 +1157,6 @@ import locale
 
 locale.setlocale(locale.LC_ALL, "ru")
 
-
 # print(time.strftime("Сегодня %d %B %y"))
 # print(time.strftime("%m/%d/%Y, %H:%M:%S",time.localtime(8845696545)))
 
@@ -1231,13 +1230,245 @@ locale.setlocale(locale.LC_ALL, "ru")
 # for i in range(1, 11):
 #     print(i, "в кубе = ", cube(i))
 
-def fib(n):
-    a = 0
-    b = 1
-    while a < n:
-        print(a, end=" ")
-        c = a + b
-        a = b
-        b = c
+# def fib(n):
+#     a = 0
+#     b = 1
+#     while a < n:
+#         print(a, end=" ")
+#         c = a + b
+#         a = b
+#         b = c
+#
+# fib(15)
 
-fib(15)
+# def is_freater(x, y):
+#     if x >y:
+#         return True
+#     else:
+#         return False
+#
+# print(is_freater(10, 3))
+# print(is_freater(10, 30))
+
+
+# def check_password(password):
+#     has_upper = False
+#     has_lower = False
+#     has_num = False
+#
+#     for ch in password:
+#         if 'A'<= ch <='Z':
+#             has_upper = True
+#         elif 'a'<= ch <='z':
+#             has_lower = True
+#         elif '0'<= ch <='9':
+#             has_num = True
+#
+#     if has_upper and has_lower and has_num:
+#         if len(password) >= 8 and has_upper and has_lower and has_num:
+#             return True
+#         else:
+#             if len(password) < 8:
+#                 print("Слишком маленький пароль")
+#     else:
+#         print("Недостаточно требуемых символов")
+#     return False
+#
+# p = input("Введите пароль")
+# if check_password(p):
+#     print("Пароль надежный")
+# else:
+#     print("ПАРОЛЬ НЕНАДЕЖНЫЙ")
+
+# def get_sum(a, b, c, d):
+#     return a + b + d
+#
+#
+# print(get_sum(1, 4, 8))
+# # print(get_sum(1, 4, 6))
+
+# def get_sum(a=4, b=5, c=7, d=9):
+#     return a + b + c + d
+#
+# # print(get_sum(d=1))
+# o = 900
+# print(get_sum(1, 4,d=o,c=6))
+
+# def sumbol(elements=20, sign='-'):
+#     for i in range(elements):
+#         print(sign, end='')
+#     print()
+#
+# sumbol(10, '+')
+# sumbol(6, '*')
+# sumbol(16, '#')
+# sumbol(7)
+# sumbol()
+
+# def digits_sum(n, vent=True):
+#     s = 0
+#     while n > 0:
+#         curl_digit = n % 10
+#         if vent and curl_digit % 2 == 0:
+#             s += curl_digit
+#         elif not vent and curl_digit % 2 != 0:
+#             s += curl_digit
+#         n //= 10
+#     return s
+#
+#
+# print("СУММА четных")
+# print(digits_sum(9874023))
+# print(digits_sum(38271))
+# print(digits_sum(123456789))
+# print("СУММА нечетных")
+# print(digits_sum(9874023, False))
+# print(digits_sum(38271, False))
+# print(digits_sum(123456789, False))
+
+# def display_info(name, age):
+#     print("Name: ", name, '\nAge: ', age)
+#     print('*' * 50)
+#
+#
+# # display_info("Васька", 3)
+# # display_info(3, "Васька")
+# display_info(name="Васька", age=3)
+# display_info(age=3, name="Васька")
+# display_info('Мурка', age=3, name="Васька")
+
+# lst1 = [1,2,3]
+# lst2 = [1,2,3]
+# lst2 = lst1
+# # print(lst1 == lst2)
+# # print(lst1 is lst2)
+# # print(id(lst1))
+# # print(id(lst2))
+#
+# lt3 = 5
+# lt4 = 5
+# print(lt3 == lt4)
+# print(lt3 is lt4)
+# print(id(lt3))
+# print(id(lt4))
+#
+# lst1 = [1,2,3]
+# print(id(lst1))
+# lst1.append(4)
+# print(id(lst1))
+# lst1.pop(1)
+# print(lst1)
+# print(id(lst1))
+
+# s = "Hello"
+# print(id(s))
+# s += ' World'
+# print(s)
+# print(id(s))
+
+# a = "HELLO"
+# b = "HELLO"
+# print(a == b)
+# print(a is b)
+# print(id(a))
+# print(id(b))
+
+# a = True
+# b = True
+# print(a == b)
+# print(a is b)
+# print(id(a))
+# print(id(b))
+
+
+# def add_numbers(n):
+#     print("Внутри функции", n ,'=', id(n))
+#     n +=1
+#     print("После изменения", n ,'=', id(n))
+#
+# x = 1
+# print(x ,'=', id(x))
+# add_numbers(x)
+# print('-' * 50)
+# x = add_numbers(x)
+# print(x ,'=', id(x))
+
+# def add_numbers(n):
+#     print("Внутри функции", n ,'=', id(n))
+#     # n += [4]
+#     n = n + [4]
+#     print("После изменения", n ,'=', id(n))
+#
+# x = [1,2,3]
+# print(x ,'=', id(x))
+# add_numbers(x)
+# print('-' * 50)
+
+# Типы данных
+# Изменяемые: списки(list)
+# Неизменяемые: числа(int, float), строки(str), булевы значения(bool), кортеж(tuple)
+
+# lst = [10, 20, 30, 40, 50, 60, 70, 80, 90]
+# tpl = (10, 20, 30, 40, 50, 60, 70, 80, 90)
+#
+# print(lst.__sizeof__())
+# print(tpl.__sizeof__())
+
+# a = (1, 3, 5, 7, 9)
+# print(a)
+# print(type(a))
+# b = tuple((1, 3, 5, 7, 9))
+# print(b)
+# print(type(b))
+# q = 1
+# q = 1,
+# q = 1, 2 ,3 ,4 ,"q" # упаковка кортежа
+# t = (1)
+# t = (1,)
+# # print(tuple(q))
+# print(tuple(t))
+
+# t1 = tuple('hello')
+# print(t1)
+# print(t1[1])
+# print(t1[1:3])
+# t1[1] = 'i'
+
+# lst = [1, 2, 3, 4, 5, 6]
+#
+# # s1 = [int(input("--> ")) for i in range(5)]
+# # s2 = tuple([int(input("--> ")) for i in range(5)])
+# # s2 = tuple(int(input("--> ")) for i in range(5))
+# s2 = tuple(lst)
+# # print(s1)
+# print(s2)
+
+# s = input("-> ")
+# s = int(input("-> "))
+# print(tuple(s))
+
+# mas = [r.randint(0, 100) for i in range(10)]
+# tpl = tuple(mas)
+# print(tpl)
+# mas = [r.randint(0, 100) for i in range(10)]
+# print(mas)
+
+# s = tuple(2 ** i for i in range(1, 13))
+# print(s)
+
+t1 = tuple("hello")
+t2 = tuple(" world")
+t3 = t1 + t2
+print(t3)
+
+# print(len(t3))
+# print(t3.count('l'))
+# print(t3.count('a'))
+# print(t3.index('l'))
+# print(t3.index('l', 4))
+# print(t3.index('a'))
+
+if "a" in t3:
+    print(t3.index('a'))
+else:
+    print("Элемента нет")
