@@ -1155,6 +1155,8 @@ from time import localtime
 
 import locale
 
+from PIL.ImImagePlugin import number
+
 locale.setlocale(locale.LC_ALL, "ru")
 
 # print(time.strftime("Сегодня %d %B %y"))
@@ -1456,19 +1458,179 @@ locale.setlocale(locale.LC_ALL, "ru")
 # s = tuple(2 ** i for i in range(1, 13))
 # print(s)
 
-t1 = tuple("hello")
-t2 = tuple(" world")
-t3 = t1 + t2
-print(t3)
+# t1 = tuple("hello")
+# t2 = tuple(" world")
+# t3 = t1 + t2
+# print(t3)
+#
+# # print(len(t3))
+# # print(t3.count('l'))
+# # print(t3.count('a'))
+# # print(t3.index('l'))
+# # print(t3.index('l', 4))
+# # print(t3.index('a'))
+# #
+# # if "a" in t3:
+# #     print(t3.index('a'))
+# # else:
+# #     print("Элемента нет")
+#
+# for i in t3:
+#     print(i, end=" ")
 
-# print(len(t3))
-# print(t3.count('l'))
-# print(t3.count('a'))
-# print(t3.index('l'))
-# print(t3.index('l', 4))
-# print(t3.index('a'))
 
-if "a" in t3:
-    print(t3.index('a'))
-else:
-    print("Элемента нет")
+# def slicer(tpl, el):
+#     if el in tpl:
+#         if tpl.count(el) > 1:
+#             first = tpl.index(el)
+#             second = tpl.index(el, first + 1) + 1
+#             return tpl[first: second]
+#         else:
+#             return tpl[tpl.index(el):]
+#     else:
+#         return ()
+#
+# print(slicer((1, 2, 3), 8))
+# print(slicer((1, 8, 3, 4, 8, 8, 9, 2), 8))
+# print(slicer((1, 2, 8, 5, 1, 2, 9), 8))
+
+# t = (10,11,[1,2,3],[4,5,6],["Hello", "world"])
+# print(t, id(t))
+# t[4][0] = 'new'
+# t[4].append('hi')
+# print(t, id(t))
+
+# t = (1, 2, 3)
+# # x = t[0]
+# # y = t[1]
+# # z = t[2]
+# x, y, z = t # Распаковка кортежа
+#
+# print(t)
+# print(x, y, z)
+# print(type(x))
+# print(type(t))
+
+# def get_user():
+#     name= "Tom"
+#     age = 23
+#     is_maried = False
+#     return name, age, is_maried
+#
+# user1, user2, user3 = get_user()
+# print(user1)
+# print(user2)
+# print(user3)
+# print(get_user())
+
+# t = (1, 2, 3, 4, 5)
+# del t
+# print(t)
+
+# lst = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+# print(type(lst))
+# print(lst)
+# tpl = tuple(lst)
+# print(type(tpl))
+# print(tpl)
+# print(list(tpl))
+
+# countries = (
+#     ("Индия", 1.500,(("Ньд-Делли", 200),("Бангалор", 100))),
+#     ("Китай", 3.500,(("Пекин", 500),("Хай-Нань", 150)))
+# )
+#
+# print(countries)
+#
+# # for country in countries:
+# #     print(country)
+#
+# for country in countries:
+#     country_name, country_population, cities = country
+#     print("Страна:", country_name, ",население:", country_population)
+#     for city in cities:
+#         city_name, city_population = city
+#         print("Город:", city_name, ",население:", city_population)
+
+# Множества (set) - неупорядоченная коллекция, которая хранить только уникальные значения
+#
+# {}
+# set()
+
+# s = {4,4,5,6,2,2,3,7,8,6,0,2}
+# print(type(s))
+# print(len(s))
+# print(s)
+
+# s = []
+# s = ()
+# s = {}
+# s = set()
+# s = set("Hello")
+#
+#
+# print(s)
+# print(type(s))
+
+# c = [1, 3, 3, 6, 6, 6, 8, 9, 0, 4]
+# s = set(c)
+# print(s)
+# c = list(s)
+# print(c)
+
+# s = {x * x for x in range(10)}
+# print(s)
+
+# numbers = [1,2,2,3,3,3,4,4,4,4,5,5,5,5,5,6,6,6,6,6,6]
+# # s = {x for x in numbers if x % 2 == 0}
+# s = list({x for x in numbers if x % 2 == 0})
+#
+# print(s)
+#
+# def to_set(el):
+#     # st = set(el)
+#     # return st, len(st)
+#     return set(el), len(set(el))
+#
+#
+# print(to_set("я обычная строка"))
+# print(to_set([4, 5, 4, 6, 2, 9, 11, 3, 4, 2]))
+
+
+# {i for i in последовательность}
+# {i for i in последовательность if условие}
+# {i(True) if условие else i(False) for i in последовательность}
+# {i(True) if условие else i(False) for i in последовательность if условие}
+
+
+# r = ["ab_1", "ac_1", "bc_1", "bc_2"]
+# print(r)
+# a = {i for i in r}
+# print(a)
+# a = {i for i in r if "a" not in i}
+# print(a)
+# #Тернарные выражения
+# a = {"A" + i[1:] if i[0] == 'a' else 'B' + i[1:] for i in r}
+# print(a)
+# a = {"A" + i[1:] if i[0] == 'a' else 'B' + i[1:] for i in r if i[1] == 'c'}
+# print(a)
+
+
+a = {'Tom', "Jerry", "Guffy"}
+a.add("Micky")
+# print(id(a))
+# print(a)
+# a.remove("Tom")
+# # a.remove("Tom1")
+# print(id(a))
+# print(a)
+
+# b = "Tom1"
+# if b in a:
+#     a.remove(b)
+# print(a)
+#a.discard('Tom1') #Удаляет только если элемент есть, если элемента нет то не выбрасывает исключение
+#a.pop() #Удаляет один какой-то элемент
+# a.clear()
+# print(a)
+
