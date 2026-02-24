@@ -1156,6 +1156,7 @@ from time import localtime
 import locale
 
 from PIL.ImImagePlugin import number
+from PIL.Image import preinit
 
 locale.setlocale(locale.LC_ALL, "ru")
 
@@ -1616,8 +1617,8 @@ locale.setlocale(locale.LC_ALL, "ru")
 # print(a)
 
 
-a = {'Tom', "Jerry", "Guffy"}
-a.add("Micky")
+# a = {'Tom', "Jerry", "Guffy"}
+# a.add("Micky")
 # print(id(a))
 # print(a)
 # a.remove("Tom")
@@ -1629,8 +1630,221 @@ a.add("Micky")
 # if b in a:
 #     a.remove(b)
 # print(a)
-#a.discard('Tom1') #Удаляет только если элемент есть, если элемента нет то не выбрасывает исключение
-#a.pop() #Удаляет один какой-то элемент
+# a.discard('Tom1') #Удаляет только если элемент есть, если элемента нет то не выбрасывает исключение
+# a.pop() #Удаляет один какой-то элемент
 # a.clear()
 # print(a)
 
+# # a = {0, 1, 2, 3}
+# b = {4, 3, 2, 1}
+#
+# # c = a.union(b)
+# # c =  a | b
+# # a.update(b)
+# # a |= b
+# # c = a.intersection(b)
+# # c =  a & b
+# # a.intersection_update(b)
+# # a &= b
+# # c = a.difference(b)
+# # c = b - a
+# # c = a.symmetric_difference(b)
+# # c = a ^ b
+# # a ^= b
+# a = {1, 2}
+# # c = a.issubset(b)
+# # c = a <= b
+# # c = a.issuperset(b)
+# # c = a>= b
+#
+# print("a = ", a)
+# print("b = ", b)
+# print("-" * 25)
+# print(c)
+
+# s1 = {1, 2}
+# s2 = {3}
+# s3 = {4, 5}
+# s4 = {3, 2, 6}
+# s5 = {6}
+# s6 = {7, 8}
+# s7 = {9, 8}
+#
+# # s = s1 | s2 | s3 | s4 | s5 | s6 | s7
+# s = s1.union(s2, s3, s4, s5, s6, s7)
+# print(s)
+# print(len(s))
+# print(min(s))
+# print(max(s))
+
+# s1 = "Hello"
+# s2 = "How are you"
+# a = set(s1) & set(s2)
+# print(a)
+# for i in a:
+#     print(i, end=" ")
+
+# drawing = {"Marina","Jenya","Sveta"}
+# music = {"Kostya","Jenya","Ilya"}
+#
+# one = drawing ^ music
+# print(one)
+#
+# two = drawing & music
+# print(two)
+#
+# drawing = drawing - two
+# print(drawing)
+
+# Тип frozenset(замороженное множество)
+
+# a = frozenset([5, 6, 7, 8, 9, 1, 2, 3, 4])
+# print(a)
+#
+# s1 = set("hello")
+# print(s1)
+# s = frozenset("hello")
+# print(s)
+
+
+# Словарь dict() - изменяемый тип данных. Данные храняться по принципу ключ значение
+
+# lst = ['one', 'two', "three"]
+# print(lst)
+# print(lst[0])
+
+# d = {"a": 'one', "b": 'two', "c": "three", "aa": 'one'}
+# print(d)
+# print(d['b'])
+
+# d = {}
+# print(d)
+# print(type(d))
+
+# d = {"one": 1, 2: "two"}
+# print(d)
+
+# users = ['ivan@gmail.com', "Ivan"]
+# users = [['ivan@gmail.com', "Ivan"]]
+# users = [
+#     ['ivan@gmail.com', "Ivan"],
+#     ['anna@gmail.com', "Anna"],
+#     ['julie@gmail.com', "Julie"],
+# ]
+#
+# print(users)
+# d_users = dict(users)
+# print(d_users)
+
+# d = {i for i in range(7)}
+# print(d)
+
+# d = {i: i for i in range(7)}
+# d = {i: i ** 2 for i in range(7)}
+# print(d)
+# print(d[2])
+# d[2] = 99
+# d[9] = 9 ** 2
+# print(d)
+#
+# d = {0: 'text', "one": 17, (1, 2.3): "Кортеж",33: [1, 2, 3], True: 11}
+# # print(d)
+# # print(d[33][2])
+# # print(d[(1, 2.3)])
+#
+# # print("one" in d)
+# # print("two" in d)
+#
+# # print(d["two"])
+#
+# # key = "one"
+# # # key = "two"
+# #
+# # # del d[key]
+# #
+# # # if key in d:
+# # #     del d[key]
+# #
+# # try:
+# #     del d[key]
+# # except KeyError:
+# #     print('Нет такого элемента')
+# #
+# # print(d)
+#
+# for key in d:
+#     print(key,"->", d[key])
+
+
+# d = {'x1': 3, 'x2': 7, 'x3': 5, 'x4': -1}
+# res = 1
+# for key in d:
+#     res *= d[key]
+#
+# print(res)
+
+# d = {}
+
+# d[1] = input('->')
+# d[2] = input('->')
+# d[3] = input('->')
+# d[4] = input('->')
+
+# d = {i: input('-> ') for i in range(1, 5)}
+#
+# print(d)
+# dislike = int(input("Что удалить: "))
+# del d[dislike]
+# print(d)
+#
+# goods = {
+#     "1": ["Core-i3-4330", 9, 4500],
+#     "2": ["Core-i5-4670K", 3, 8500],
+#     "3": ["AMD FX-6300", 6, 3700],
+#     "4": ["Pentium G3220", 8, 2100],
+#     "5": ["Core-i5-3450", 5, 6400],
+# }
+#
+# for i in goods:
+#     print(i, ")", goods[i][0], ' - ', goods[i][1], " шт. по ", goods[i][2],"руб.", sep='')
+#
+# while True:
+#     n = input('№')
+#     if n != "0":
+#         k = int(input("Количество: "))
+#         goods[n][1] = k
+#     else:
+#         break
+#
+# for i in goods:
+#     print(i, ")", goods[i][0], ' - ', goods[i][1], " шт. по ", goods[i][2],"руб.", sep='')
+
+# d = {"A": 1, "B":2, "C":3}
+# v = d["B"]
+# print("B = ",v)
+
+# value = d.get('B')
+# value = d.get('E')
+# value = d.get('A', "False")
+#
+# print(value)
+# d.clear()
+# print(d)
+
+# d2 = d.copy()
+# d2 = d
+# print('D = ', d)
+# print('D2 = ', d2)
+# print()
+#
+# d['E'] = 9
+# d2["W"] = 77
+#
+# print('D = ', d)
+# print('D2 = ', d2)
+
+d = {"A": 1, "B":2, "C":3}
+# a = d.items()
+# a = d.keys()
+a = d.values()
+print(a)
