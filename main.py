@@ -936,7 +936,7 @@
 # s2.sort()
 # print(s2)
 
-import random
+# import random
 #
 # # print(random.random())
 # # print(random.randint(10, 15))
@@ -1154,9 +1154,6 @@ from time import localtime
 # print(res,"sec")
 
 import locale
-
-from PIL.ImImagePlugin import number
-from PIL.Image import preinit
 
 locale.setlocale(locale.LC_ALL, "ru")
 
@@ -1843,8 +1840,176 @@ locale.setlocale(locale.LC_ALL, "ru")
 # print('D = ', d)
 # print('D2 = ', d2)
 
-d = {"A": 1, "B":2, "C":3}
+# d = {"A": 1, "B":2, "C":3}
 # a = d.items()
 # a = d.keys()
-a = d.values()
-print(a)
+# a = d.values()
+# print(a)
+# print(d["A"] + d["C"])
+
+# for key in d.keys():
+#     print(key,end=' ')
+
+# for key in d.values():
+#     print(key, end=' ')
+
+# for key in d.items():
+#     print(type(key), end=' ')
+
+# for key, val in d.items():
+#     print("key = ", key, ".valoue = ",val)
+
+# d = {"A": 1, "B": 2, "C": 3}
+
+# item = d.pop("B")
+# item = d.pop("E")
+# item = d.pop("E", "NOT FOUND")
+#
+# print(item)
+# print(d)
+
+# item = d.setdefault("C")
+# item = d.setdefault("E")
+# item = d.setdefault("B", 5)
+# print(item)
+# print(d)
+
+# d.update([("E", 5),("F", 55),("V", 55)])
+# d.update([("E", 5)])
+# print(d)
+
+# x = {'a':1, 'b':2}
+# y = {'b':3, 'c':4}
+# # z = x |y
+# z = x.copy()
+# z.update(y)
+# print(z)
+
+# d = {'name': "Kelly", "age":25, "salary":8000, 'city': "New York"}
+#
+# new_d = dict()
+# new_d['name'] = d.pop('name')
+# new_d['salary'] = d.pop('salary')
+#
+#
+# print(d)
+# print(new_d)
+
+# Вложенные словари
+#
+# a = {
+#     'First': {
+#         1: "one",
+#         2: "two",
+#         3: "three"
+#     },
+#     'Second': {
+#         4: "four",
+#         5: "five",
+#     }
+# }
+#
+# # print(a)
+# for x in a:
+#     print(x)
+#     for y in a[x]:
+#         print(y," ", a[x][y], sep='')
+
+# sales = {
+#     "John": {"N": 3056,"S":8463,"E":8441, "W":2694},
+#     "Tom": {"N": 4832,"S":6786,"E":4737, "W":3612},
+#     "Anne": {"N": 5239,"S":4802,"E":5820, "W":1859},
+#     "Fiona": {"N": 3904,"S":3645,"E":8821, "W":2451},
+# }
+#
+# for x in sales:
+#     print(x)
+#     for y in sales[x]:
+#         print(y," ", sales[x][y], sep='')
+#
+# person = input("Имя: ")
+# region = input("Регион: ")
+# print(sales[person][region])
+# data  = int(input("Новое значение: "))
+# sales[person][region] = data
+# print(sales[person])
+
+# data = {"один": 1, "два": 2, "три": 3, "четыре": 4}
+# d = {k: v for k, v in data.items()}
+# print(d)
+# data["один"] = 99
+# print(data)
+# print(d)
+
+# data = {"один": 1, "два": 2, "три": 3, "четыре": 4}
+# d = {k: v for k, v in data.items() if v <= 2}
+# print(d)
+
+# s = "Hello"
+# b = {i: i * 3 for i in s}
+# print(b)
+#
+# # a = list(b)
+# a = list(b.items())
+#
+# print(a)
+
+
+# a = ["one", 1, 2, 3, "two", 10, 20, "three", 15, 36, 60, "four", -20]
+#
+# d = dict()
+# s = None
+# for i in a:
+#     if type(i) == str:
+#         d[i] = []
+#         s = i
+#     else:
+#
+#         d[s].append(i)
+# print(d)
+
+
+# zip() #Создает словарь из двух списков
+#
+# d = zip([1, 2, 3], ["Январь", "Февраль", "Март"])
+# d = dict(zip([1,2,3],["Январь","Февраль","Март"]))
+#
+# print(d)
+# print(type(d))
+# # print(dict(d))
+# print(list(d))
+
+# a = ["Январь", "Февраль", "Март"]
+# b = [1, 2, 3]
+# d = {k: v for k, v in zip(b, a)}
+#
+# print(d)
+
+# b = [12, 1, 6]
+# c = zip(b)
+# # print(list(c))
+# print(dict(c))
+
+
+# a = ['a', 'b', 'd', 'c']
+# b = [12, 1, 6]
+# c = [2.3, 5.6, 1.0]
+# q = zip(a, b, c)
+# # print(list(q))
+# print(dict(q))
+
+# print(list(zip(range(100), range(600))))
+students = {}
+students_value = int(input("кол: "))
+marks = 0
+for i in range(students_value):
+    number = input("Студент: ")
+    mark = int(input("Баллы: "))
+    students[number] = mark
+    marks += mark
+
+average = marks / students_value
+print("Средний", average)
+for i in students:
+    if students[i] > average:
+        print(i)
