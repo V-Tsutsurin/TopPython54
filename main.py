@@ -1118,6 +1118,8 @@ import math
 # print("Длинна окружности: ", round(2 * math.pi * rd, 2))
 
 import time
+from calendar import month
+from random import random
 from time import localtime
 
 # seconds = time.time()
@@ -1156,6 +1158,7 @@ from time import localtime
 import locale
 
 locale.setlocale(locale.LC_ALL, "ru")
+
 
 # print(time.strftime("Сегодня %d %B %y"))
 # print(time.strftime("%m/%d/%Y, %H:%M:%S",time.localtime(8845696545)))
@@ -1999,17 +2002,232 @@ locale.setlocale(locale.LC_ALL, "ru")
 # print(dict(q))
 
 # print(list(zip(range(100), range(600))))
-students = {}
-students_value = int(input("кол: "))
-marks = 0
-for i in range(students_value):
-    number = input("Студент: ")
-    mark = int(input("Баллы: "))
-    students[number] = mark
-    marks += mark
+# students = {}
+# students_value = int(input("кол: "))
+# marks = 0
+# for i in range(students_value):
+#     number = input("Студент: ")
+#     mark = int(input("Баллы: "))
+#     students[number] = mark
+#     marks += mark
+#
+# average = marks / students_value
+# print("Средний", average)
+# for i in students:
+#     if students[i] > average:
+#         print(i)
 
-average = marks / students_value
-print("Средний", average)
-for i in students:
-    if students[i] > average:
-        print(i)
+# one = {"name":"Иван","last_name":"Петров","job":"Консультант"}
+# two = {"name":"Петр","last_name":"Иванов","job":"Менеджер"}
+#
+# for (k1,v1), (k2,v2) in zip(one.items(), two.items()):
+#     print(k1, "->", v1)
+#     print(k2, "->", v2)
+
+# Распаковка последовательности
+# pairs = [(1,"a"),(2,"b"),(3,"c"),(4,"d")]
+# print(pairs)
+# a, b = zip(*pairs)
+# print(a)
+# print(b)
+
+
+# month = ["Январь", "Февраль", "Март"]
+# total_sales = [52000.00, 51000.00, 48000.00]
+# prod_cost = [46800.00, 45900.00, 43200.00]
+#
+# for sales, costs, m in zip(total_sales, prod_cost, month):
+#     profit = sales - costs
+#     print("Общая прибыль в ", m, '=', profit)
+
+# one = {"apple": 20, "orange": 35, "peper": 60}
+# two = {"peper": 40, "onion": 55}
+# print(one, two)
+# print([one, two])
+# print({**one, **two})
+
+
+# for i in range(3):
+#     print(i)
+
+# color = ["red", 'yellow', "green"]
+# j = 1
+# for i in color:
+#     print(j, i)
+#     j +=1
+
+
+# enumerate(iterable, start=0):
+
+# color = ["red", 'yellow', "green"]
+#
+# for j,i in enumerate(color, 1):
+#     print(j, i)
+
+# num_list = [1, 2, 3, 4, 5]
+# i = iter(num_list)
+# # print(i)
+# print(next(i))
+# print(next(i))
+# print(next(i))
+# print(next(i))
+# print(next(i, "STOP"))
+# print(next(i, "STOP"))
+
+# a = [1, 2, 3]
+# b = [*a ,4, 5, 6]
+# # print(b)
+#
+#
+# # def func(c):
+# #     return c
+#
+# def func(*args):
+#     return args
+#
+# print(func(2,3,4))
+# print(func())
+
+# def summa(*param):
+#     rez = 0
+#     for i in param:
+#         rez += i
+#     return rez
+
+
+# print(summa(1, 3))
+# print(summa(1, 3, 5, 6, 89, 9, 23, 234, 64, 7, 23, 24, 46, 4334, 5))
+
+
+# def to_dict(*args):
+#     return {i: i for  i in args}
+#
+#
+# print(to_dict(1, 2, 3, 4))
+# print(to_dict("grey", (2, 17), 3.11, -4))
+
+# def ch(*args):
+#     res = []
+#     sr_ar = sum(args) / len(args)
+#     print(sr_ar)
+#
+#     for i  in args:
+#         if i < sr_ar:
+#             res.append(i)
+#     return res
+#
+#
+# print(ch(1, 2, 3, 4, 5, 6, 7, 8, 9))
+# print(ch(3, 6, 1, 9, 5))
+
+# def func(b, *args):
+#     return b , args
+#
+# print(func(1))
+# print(func(1,2,3,4,"hello"))
+
+
+# def print_score(name, *scores):
+#     print("Имя студента " + name)
+#     for score in scores:
+#         print(score)
+#
+#
+# print_score("Ivan", 100, 95, 88, 92, 90)
+# print_score("Igor", 96, 20, 33)
+
+# def func(**kwargs):
+#     return kwargs
+#
+#
+# print(func())
+# print(func(a=1, b=2, c=3))
+# print(func(a="python"))
+# print(func(_2="python"))
+
+# def intro(**data):
+#     for key, value in data.items():
+#         print(key, "is", value)
+#     print()
+#
+# intro(first_name="Agatha", last_name="Cristi", age=22)
+# intro(first_name="Igor", last_name="Ivanov",email ="igor@gmail.com", age=92, phone = "999-99-999-99")
+
+# def db(**kwargs):
+#     my_dict.update(kwargs)
+#
+#
+# my_dict = {'one': "firs"}
+# db(k1=22, k2=31, k3=91)
+# db(name="Bob", age=31, weigth=61, eyes_color="grey")
+# print("my_dict = ", my_dict)
+
+
+# def db(b, c, w,*args, a, name,  **kwargs):
+#     print(b, c, w, a, args, name, kwargs)
+#
+#
+# db(4, 8, 1, 1,2, a=4, name="Anna", q=4)
+
+# Области видиммости(всего 4)
+
+
+# name = "Tom"
+#
+# def hi():
+#     name = "Jerry" #Локальная
+#     print("Hello", name)
+#
+#
+# def bye():
+#     print("Good bye", name)
+#
+# hi()
+# bye()
+# print(name)
+
+# name = "Tom"
+#
+# def hi():
+#     global name
+#     name = "Jerry" #Локальная
+#     print("Hello", name)
+#
+#
+# def bye():
+#     print("Good bye", name)
+#
+# print(name)
+# # hi()
+# bye()
+#
+# name = "Sam"
+# print(name)
+
+
+def topk(nums, k):
+    count = {}
+    for num in nums:
+        if num in count:
+            count[num] +=1
+        else:
+            count[num] = 1
+    items = []
+    for num, val in count.items():
+        items.append((num, val))
+
+    def get_freq(pair):
+        return  pair[1]
+    items.sort(key=get_freq, reverse=True)
+
+    result = []
+    for i in range(k):
+        result.append(items[i][0])
+
+    return result
+
+
+
+nums = [1,1,1,2,2,3,3,3,3,3,3,3,3,4,4,4,4,5,5,5,5,]
+k=3
+print(topk(nums,k))
