@@ -1156,6 +1156,9 @@ from time import localtime
 # print(res,"sec")
 
 import locale
+from tkinter.font import names
+
+from fontTools.subset.svg import xpath
 
 locale.setlocale(locale.LC_ALL, "ru")
 
@@ -2205,29 +2208,326 @@ locale.setlocale(locale.LC_ALL, "ru")
 # print(name)
 
 
-def topk(nums, k):
-    count = {}
-    for num in nums:
-        if num in count:
-            count[num] +=1
-        else:
-            count[num] = 1
-    items = []
-    for num, val in count.items():
-        items.append((num, val))
+# def topk(nums, k):
+#     count = {}
+#     for num in nums:
+#         if num in count:
+#             count[num] +=1
+#         else:
+#             count[num] = 1
+#     items = []
+#     for num, val in count.items():
+#         items.append((num, val))
+#
+#     def get_freq(pair):
+#         return  pair[1]
+#     items.sort(key=get_freq, reverse=True)
+#
+#     result = []
+#     for i in range(k):
+#         result.append(items[i][0])
+#
+#     return result
+#
+#
+#
+# nums = [1,1,1,2,2,3,3,3,3,3,3,3,3,4,4,4,4,5,5,5,5,]
+# k=3
+# print(topk(nums,k))
 
-    def get_freq(pair):
-        return  pair[1]
-    items.sort(key=get_freq, reverse=True)
 
-    result = []
-    for i in range(k):
-        result.append(items[i][0])
+# name = "Tom"
+#
+# def hi():
+#     global name
+#     name = "Jerry" #Локальная
+#     print("Hello", name)
+#
+#
+# def bye():
+#     print("Good bye", name)
+#
+# print(name)
+# # hi()
+# bye()
+#
+# name = "Sam"
+# print(name)
 
-    return result
+# i = 5
+#
+#
+# def func(arg=i):
+#     print("i =", i)
+#     print("arg =", arg)
+#
+# i = 6
+# func()
+
+# x = 4
+#
+# def add_two(a):
+#     # x = 2
+#
+#     def add_some():
+#         # x = 5
+#         print('x =', x)
+#         return a + x
+#     return add_some()
+#
+# print(add_two(3))
+
+# import builtins
+#
+# names = dir(builtins)
+#
+# for t in names:
+#     print(t)
+
+# min = [4, 5, 6]
+# print(max(min))
+# print(min(min))
 
 
+# def outer_func(who):
+#     def inner_func():
+#         print("Hello,", who)
+#
+#     inner_func()
+#
+# outer_func('World!')
 
-nums = [1,1,1,2,2,3,3,3,3,3,3,3,3,4,4,4,4,5,5,5,5,]
-k=3
-print(topk(nums,k))
+
+# a = 2
+# def func1():
+#     a = 6
+#     def func2(b):
+#         global a
+#         a = 4
+#         print("Сумма", a + b)
+#     print('a = ', a)
+#     func2(4)
+#
+#
+# print("Global1 ",a)
+# func1()
+# print("Global2 ",a)
+
+# def fn1():
+#     x = 25 # 1
+#
+#     def fn2():
+#         nonlocal x
+#         x = 33 # 3
+#
+#         def fn3():
+#             nonlocal x
+#             x = 44 # 5
+#             print("fn3.x =",x) # 6
+#         fn3() # 4
+#         print("fn2.x =", x) # 7
+#     fn2() # 2
+#     print("fn1.x =", x) # 8
+#
+# fn1()
+
+# def outer(a1, b1, a2, b2):
+#     a = 0
+#     b = 0
+#
+#     def inner():
+#         nonlocal a, b
+#         a = a1 + a2
+#         b = b1 + b2
+#
+#     inner()
+#     return a, b
+#
+# res = outer(2, 3, -1, 4)
+# print(res)
+
+
+# def increment(number):
+#     def inner():
+#         return number + x
+#     return inner()
+#
+# print(increment(12))
+
+# def increment(number):
+#     print("number =", number)
+#     def inner(x):
+#         print("x =",x)
+#         return number + x
+#     return inner
+#
+# # a = increment(12)
+# # # print(a)
+# # print(a(5))
+# # print(a(2))
+# # print("-"*23)
+# # b = increment(1)
+# # # print(a)
+# # print(b(6))
+# # print(b(10))
+#
+# print(increment(10)(5))
+
+# def func1():
+#     a = 1
+#     b = "line"
+#     c = [1, 2, 3]
+#
+#     def func2():
+#         return a, b, c
+#     return func2
+#
+# # func = func1()
+# # print(func())
+# print(func1()())
+
+# def func1():
+#     a = 1
+#     b = "Hello"
+#     c = [1, 2, 3]
+#
+#     def func2():
+#         nonlocal a, b
+#         c.append(4)
+#         a = a + 1
+#         b = b + '_World!'
+#         return a, b, c
+#
+#     return func2
+#
+#
+# func = func1()
+# print(func())
+
+# def func(city):
+#     s = 0
+#
+#     def inner():
+#         nonlocal s
+#         s += 1
+#         print(city, s)
+#     return inner
+#
+# res1 = func("Москва")
+# res1()
+# res1()
+#
+# res2 = func("Сочи")
+# res2()
+# res2()
+# res2()
+# res1()
+# res1()
+#
+# student = {
+#     "Иван":96,
+#     "Антон":45,
+#     "Анна":88,
+#     "Валерий":76,
+#     "Катя":49,
+#     "Настя":30,
+#     "Дима":54,
+#     "Маша":66,
+#     "Яна":77,
+#     "Васька":88,
+# }
+#
+# def make_classife(lower, upper):
+#     def students(exam):
+#         return {k: v for k,v in exam.items() if lower<= v < upper}
+#     return students
+#
+# a = make_classife(80, 100)
+# b = make_classife(70, 80)
+# c = make_classife(50, 70)
+# d = make_classife(0, 50)
+#
+# print("5", a(student))
+# print("4", b(student))
+# print("3", c(student))
+# print("2", d(student))
+
+
+# lambda - анонимные функции
+#
+# def get_sum(x, y):
+#     return x + y
+#
+#
+# print(get_sum(1, 2))
+# print(get_sum(3, 4))
+# print("-" * 20)
+#
+# print((lambda x, y: x + y)(1, 2))
+# print((lambda x, y: x + y)(3, 4))
+
+# func = lambda x, y: x + y
+# print(func(1, 2))
+# print(func(3, 4))
+
+# print((lambda x, y: x ** 2 + y ** 2)(2, 5))
+
+# summ = lambda a=1, b=2, c=3: a + b + c
+# #
+# # print(summ()) #6
+# # print(summ(10)) #15
+# # print(summ(10,20)) #33
+# # print(summ(10,20, 30)) #60
+
+# func1 = lambda *args: args
+#
+# print(func1(1, 2, 3, 4, 5, 6, 7, 8, 9))
+# print(func1('a', 'b', 'c', 'd'))
+
+# c = (
+#     lambda x:x*2,
+#     lambda x:x*3,
+#     lambda x:x*4
+# )
+#
+# for t in c:
+#     print(t('abc_'))
+
+# def inc(n):
+#     def inner(x):
+#         return n + x
+#     return inner
+#
+# f = inc(5)
+# print(f(2))
+
+# def inc(n):
+#     return lambda x: n + x
+#
+# f1 = inc(5)
+# print(f1(2))
+#
+# inc2 = lambda n: lambda x: n+x
+#
+# f2 = inc2(5)
+# print(f2(2))
+
+
+# print((lambda n: lambda x: n+x)(5)(2))
+
+
+# print((lambda n: lambda x: lambda y: n+x+y)(5)(2)(3))
+
+d = {'b':10,'a':15,'c':32}
+
+# d.sort
+# print(sorted(d.items()))
+
+list_d = list(d.items())
+print(list_d)
+list_d.sort()
+print(list_d)
+
+list_d.sort(key=lambda i: i[1], reverse=True)
+print(list_d)
+print(dict(list_d))
