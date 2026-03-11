@@ -2518,16 +2518,230 @@ locale.setlocale(locale.LC_ALL, "ru")
 
 # print((lambda n: lambda x: lambda y: n+x+y)(5)(2)(3))
 
-d = {'b':10,'a':15,'c':32}
+# d = {'b':10,'a':15,'c':32}
+#
+# # d.sort
+# # print(sorted(d.items()))
+#
+# list_d = list(d.items())
+# print(list_d)
+# list_d.sort()
+# print(list_d)
+#
+# list_d.sort(key=lambda i: i[1], reverse=True)
+# print(list_d)
+# print(dict(list_d))
 
-# d.sort
-# print(sorted(d.items()))
+# players = [
+#     {'name': "Антон", "last name": "Бирюков", "rating": 9},
+#     {'name': "Алексей", "last name": "Бодня", "rating": 10},
+#     {'name': "Федор", "last name": "Сидоров", "rating": 4},
+#     {'name': "Михайл", "last name": "Семенов", "rating": 6}
+# ]
+#
+# res1 = sorted(players, key=lambda items: items["last name"])
+# print(res1)
+#
+# res2 = sorted(players, key=lambda items: items["rating"], reverse=True)
+# print(res2)
+#
+# res3 = sorted(players, key=lambda items: items["rating"])
+# print(res3)
 
-list_d = list(d.items())
-print(list_d)
-list_d.sort()
-print(list_d)
+# a = [(lambda x, y: x + y), (lambda x, y: x - y), (lambda x, y: x * y), (lambda x, y: x / y)]
+#
+# b = a[0](5, 3)
+# print(b)
 
-list_d.sort(key=lambda i: i[1], reverse=True)
-print(list_d)
-print(dict(list_d))
+# d = {
+#     1: lambda: print("Понедельник"),
+#     2: lambda: print("Вторник"),
+#     3: lambda: print("Среда"),
+#     4: lambda: print("Четверг"),
+#     5: lambda: print("Пятница"),
+#     6: lambda: print("Суббота"),
+#     7: lambda: print("Воскресенье"),
+# }
+#
+# # print(d[1])
+# d[3]()
+
+
+# print((lambda a, b: a if a > b else b)(15, 2))
+
+# map(func, *iterable)
+
+# def mult(t):
+#     return t * 2
+#
+#
+# lst = [2, 7, 4, -4, 10, -7]
+#
+# a = list(map(mult, lst))
+#
+# print(a)
+#
+# print(list(map(lambda t: t * 2, lst)))
+
+# b = ['1', '2', '3', '4', '5']
+# print(b)
+# c = list(map(int, b))
+# print(c)
+# print(type(c))
+
+# st = ['a', 'b', 'c', 'd', 'e']
+# num = [1, 2, 3, 4, 5, 6, 7]
+#
+# print(list(map(lambda x, y: (x, y), num, st)))
+# print(list(map(lambda x, y: {x: y}, num, st)))
+# print(list(map(lambda x, y: str(x) + y, num, st)))
+
+# l1 = [1, 2, 3]
+# l2 = [4, 5, 6]
+#
+# print(list(map(lambda x, y: x + y, l1, l2)))
+
+# res = filter(func => (true or false), *iterable)
+
+# t = ('abc', "abcd", "def", 'tres', "ufo", 'lopp')
+#
+# t2 = tuple(filter(lambda s: len(s) == 4, t))
+# print(t2)
+
+# b = [55, 77, 32, 89, 94, 45, 22, 99, 26, 56, 45, 50]
+# res = list(filter(lambda s: s < 50, b))
+# print(res)
+
+# import random
+#
+# lst = [random.randint(1,40) for i in range(10)]
+#
+# print(lst)
+#
+# res = list(filter(lambda x: 10 <= x <= 20, lst))
+# print(res)
+
+# def hello():
+#     return "Hello, I am func 'hello'" #3
+#
+# def bye():
+#     return "BYE!!!"
+#
+# def super_func(func):
+#     print("Hello, I am 'super_func'") #2
+#
+#     print(func()) #4
+#
+#
+# # super_func(hello) #1
+# super_func(bye) #1
+
+
+# def hello():
+#     return "Hello, I am func 'hello'"
+#
+# test = hello
+# print(test())
+
+# def my_decorator(func): #2
+#     def func_wrapper(): #3
+#         print("Code before")#4
+#         func()#5
+#         print("Code after")#8
+#     return func_wrapper #3
+#
+#
+# def func_test(): #6
+#     print("func_test") #7
+#
+# text = my_decorator(func_test) #1
+# text()
+#
+# def my_decorator(func):
+#     def func_wrapper():
+#         print("*" * 40)
+#         func()
+#         print("=" * 40)
+#     return func_wrapper
+#
+#
+# @my_decorator
+# def func_test(): #6
+#     print("func_test") #7
+#
+#
+# func_test()
+#
+# @my_decorator
+# def hello():
+#     print('hello')
+#
+# hello()
+
+# def bold(fn):
+#     def wrap():
+#         return "<b>" + fn() + "</b>"
+#     return wrap
+#
+# def italic(fn):
+#     def wrap():
+#         return "<i>" + fn() + "</i>"
+#     return wrap
+#
+# @bold
+# @italic
+# def hello():
+#     return "text"
+#
+# print(hello())
+
+# def cnt(fn):
+#     count = 0
+#     def wrap():
+#         nonlocal count
+#         count += 1
+#         fn()
+#         print("Вызов функции", count)
+#     return wrap
+#
+#
+# @cnt
+# def hello():
+#     print("Hello")
+#
+#
+# hello()
+# hello()
+# hello()
+
+# def args_decorator(fn):
+#     def wrap(args1, args2):
+#         print("Данные", args1, args2)
+#         fn(args1, args2)
+#     return wrap
+#
+#
+# @args_decorator
+# def print_full_name(first, last):
+#     print("Меня зовут", first, last)
+#
+#
+# print_full_name("Иван", "Петров")
+
+
+def args_decorator(fn):
+    def wrap(*args, **kwargs):
+        print("args", args)
+        print("kwargs", kwargs)
+        fn(*args, **kwargs)
+
+    return wrap
+
+
+@args_decorator
+def print_full_name(a, b, c, study='С#'):
+    print(a, b, c, "изучают", study)
+
+
+print_full_name("Иван", "Петр", "Борис", study="Python")
+print_full_name("Васька", "Мурзик", "Мурка")
