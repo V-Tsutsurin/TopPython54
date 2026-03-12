@@ -1158,6 +1158,7 @@ from time import localtime
 import locale
 from tkinter.font import names
 
+from fontTools.misc.cython import returns
 from fontTools.subset.svg import xpath
 
 locale.setlocale(locale.LC_ALL, "ru")
@@ -2728,20 +2729,198 @@ locale.setlocale(locale.LC_ALL, "ru")
 #
 # print_full_name("Иван", "Петров")
 
+#
+# def args_decorator(fn):
+#     def wrap(*args, **kwargs):
+#         print("args", args)
+#         print("kwargs", kwargs)
+#         fn(*args, **kwargs)
+#
+#     return wrap
+#
+#
+# @args_decorator
+# def print_full_name(a, b, c, study='С#'):
+#     print(a, b, c, "изучают", study)
+#
+#
+# print_full_name("Иван", "Петр", "Борис", study="Python")
+# print_full_name("Васька", "Мурзик", "Мурка")
 
-def args_decorator(fn):
-    def wrap(*args, **kwargs):
-        print("args", args)
-        print("kwargs", kwargs)
-        fn(*args, **kwargs)
+# def args_dec(fn):
+#     def wrap(x, y):
+#         print("Сложение", x, "и", y, '=', end=' ')
+#         fn(x, y)
+#
+#     return wrap
+#
+#
+# @args_dec
+# def summa(a, b):
+#     print(a + b)
+#
+#
+# @args_dec
+# def sub(a, b):
+#     print(a - b)
+#
+#
+# summa(5, 2)
+# sub(5, 2)
 
-    return wrap
+# def decor(args1, args2):
+#     def args_dec(fn):
+#         def wrap(x, y):
+#             print(args1, x, args2, y, '=', end=' ')
+#             fn(x, y)
+#         return wrap
+#     return args_dec
+#
+#
+# @decor("Сложение", "+")
+# def summa(a, b):
+#     print(a + b)
+#
+#
+# @decor("Разность", "-")
+# def sub(a, b):
+#     print(a - b)
+#
+#
+# summa(5, 2)
+# sub(5, 2)
+#
+# def myltiply(arg):
+#     def my_decorator(func):
+#         def wrap(*args, **kwargs):
+#             return arg * func(*args, **kwargs)
+#
+#         return wrap
+#
+#     return my_decorator
+#
+#
+# @myltiply(5)
+# def return_num(num):
+#     print("num = ", num)
+#     return num
+#
+# @myltiply(10)
+# def return_str(s):
+#     return s
+#
+#
+# @myltiply(10)
+# def summa(a,b):
+#     return a + b
+#
+# print("Resut", return_num(7))
+# print("Resut", return_str('a'))
+# print("Resut", summa(1,5))
+
+# print(01)
+# print(int("10"))
+# print(int("1010", 2))
+# print(int("12", 8))
+# print(int("A", 16))
+
+# print(10)
+# print(bin(10)) #0b1010
+# print(oct(10)) #0o12
+# print(hex(10)) #0xa
+
+# q = "Pyt"
+# w = 'hon'
+# e = q + w
+# # print(e)
+# #
+# # print(e * 3)
+# # print(e * -3)
+#
+# print(e in "I am learning Python")
+# print(e in "I am learning JS")
+
+# s = 'Hello'
+#
+# # print(s[1])
+# # print(s[-5])
+# # print(s[5])
+# print(s[2:4:])
+# print(s[::2])
+
+# s = "python"
+# a = s[:3] + 't' + s[4:]
+# print(a)
 
 
-@args_decorator
-def print_full_name(a, b, c, study='С#'):
-    print(a, b, c, "изучают", study)
+# def chanegChar(s, c_old, c_new):
+#     i = 0
+#     s2 = ""
+#     while i < len(s):
+#         if s[i] == c_old:
+#             s2 = s2 + c_new
+#         else:
+#             s2 = s2 + s[i]
+#         i += 1
+#     return s2
+#
+#
+#
+# str1 = "Я изучаю Nython. Мне нравиться Nython. Nython очень интересный язык программирования."
+# str2 = chanegChar(str1, "N", "P")
+# print(str1)
+# print(str2)
+
+# print("Привет")
+# print(u"Привет") #utf-8
+
+# print('I\'m learning \n python!')
+# print('C:\\file.txt')
+# print(r'C:\file.txt')
+# print(r'C:\file.txt\\'[:-1])
+# print(r'C:\file.txt' + "\\")
+# print('C:\\file.txt\\')
+
+# name = "Дмитрий"
+# age = 25
+#
+# print("Меня зовут", name,".","Мне", age,"лет." )
+# print(f"Меня зовут {name}. Мне {age} лет." )
+
+# import  math
+#
+# print(f"Значение числа pi: {round(math.pi, 2)}")
+# print(f"Значение числа pi: {math.pi:.2f}")
+
+# x = 10
+# y = 5
+#
+# print(f"{x} x {y} / 2 = {x * y / 2}")
+
+# a = 74
+# print(f"{{{{{a}}}}}")
+#
+# dir_name = "my_doc"
+# file_name = "data.txt"
+#
+# print(fr"home\{dir_name}\{file_name}")
+# # print(f"home\{dir_name}\{file_name}")
+# print('home\\' + dir_name + "\\" + file_name)
 
 
-print_full_name("Иван", "Петр", "Борис", study="Python")
-print_full_name("Васька", "Мурзик", "Мурка")
+# s = '''
+# <div>
+#     <a>Какой-то текст</a>
+# </div>
+# '''
+# print(s)
+
+def squares(n):
+    """
+    Принимает число n, и возвращает квадрат числа n
+    """
+    a = 2
+    return n ** a
+
+print(squares(5))
+print(squares.__doc__)
