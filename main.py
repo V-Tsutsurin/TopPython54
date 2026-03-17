@@ -1160,9 +1160,9 @@ from tkinter.font import names
 
 from fontTools.misc.cython import returns
 from fontTools.subset.svg import xpath
+from pyparsing import oneOf
 
 locale.setlocale(locale.LC_ALL, "ru")
-
 
 # print(time.strftime("Сегодня %d %B %y"))
 # print(time.strftime("%m/%d/%Y, %H:%M:%S",time.localtime(8845696545)))
@@ -2915,12 +2915,168 @@ locale.setlocale(locale.LC_ALL, "ru")
 # '''
 # print(s)
 
-def squares(n):
-    """
-    Принимает число n, и возвращает квадрат числа n
-    """
-    a = 2
-    return n ** a
+# def squares(n):
+#     """
+#     Принимает число n, и возвращает квадрат числа n
+#     """
+#     a = 2
+#     return n ** a
+#
+# print(squares(5))
+# print(squares.__doc__)
 
-print(squares(5))
-print(squares.__doc__)
+# print(ord("c"))
+# print(ord("#"))
+# print(ord("с"))
+
+# while True:
+#     n = input("-> ")
+#     if n != "-1":
+#         print(ord(n))
+#     else:
+#         break
+#
+# my_str = "Test string for me"
+# arr = [ord(x) for x in my_str]
+# print("ASCII коды: ", arr)
+# arr = [int(sum(arr) / len(arr))] + arr
+# print("Среднее арифметическое: ", arr)
+# arr += [x for x in [ord(x) for x in input("-> ")[:3]] if x not in arr]
+# print(arr)
+# if arr[-1] in arr[:-1]:
+#     print("Количество последних элементов: ", arr.count(arr[-1]) - 1)
+# arr.sort(reverse=True)
+# print(arr)
+#
+# print(chr(114))
+# print(chr(1069))
+#
+# a = 1073
+# b = 1103
+#
+# if a > b:
+#     for i in range(b,a + 1):
+#         print(chr(i), end=" ")
+#     else:
+#         for i in range(a, b + 1):
+#             print(chr(i), end=" ")
+
+
+# print("apple" == "Apple")
+# print("apple" > "Apple") #97 > 65
+#
+# from random import randint
+#
+# short = 8
+# longest = 12
+# min_ascii = 33
+# max_ascii = 126
+#
+# def random_password():
+#     random_length = randint(short, longest)
+#     res = ''
+#     for i in range(random_length):
+#         random_char = chr(randint(min_ascii, max_ascii))
+#         res += random_char
+#     return res
+#
+# print("Ваш пароль ", random_password())
+
+# s = "hello, WORLD! I am learn Python"
+# print(s.capitalize()) #Hello, world! i am learn python
+# print(s.lower()) #hello, world! i am learn python
+# print(s.upper()) #HELLO, WORLD! I AM LEARN PYTHON
+# print(s.swapcase()) #HELLO, world! i AM LEARN pYTHON
+# print(s.title()) #Hello, World! I Am Learn Python
+
+# s = "hello, WORLD! I am learn Python"
+#
+# # print(s.count('h',1, -4)) #количество искомых символов
+# print(s.find('Python')) #возвращает индекс первого вхождения
+# print(s.find('рPython')) #если подстроки не, возвращает -1
+
+# string = "один два"
+# one = string[:string.find(' ')]
+# two = string[string.find(' ') + 1:]
+# print(two + " " + one)
+
+# s = "ab12c59p7dq7878978978"
+# digits = []
+# for symbol in s:
+#     if "0123456789".find(symbol) != -1:
+#         digits.append(int(symbol))
+# print(digits)
+
+# for i in range(10):
+#     if str(i) in s:
+#         digits.append(i)
+# print(digits)
+#
+# s = "hello, WORLD! I am learn Python"
+# # print(s.find('Python'))
+# # print(s.index("Python"))
+# print(s.index("oPython"))
+
+# s = "Дана ст(рока символов, среди которых есть одна открыв)ающаяся"
+# ind1 = s.index("(")
+# ind2 = s.index(")")
+#
+# print(ind1)
+# print(ind2)
+#
+# print(s[ind1 + 1:ind2])
+
+# s = "hello, WORLD! I am learn Python"
+# # print(s.find('a'))
+# # print(s.rfind('a'))
+# print(s.index('a'))
+# print(s.rindex('a'))
+
+# s = "Lorem consequat"
+#
+# item = "x"
+# if s.count(item) == 1:
+#     print(s.find(item))
+# elif s.count(item) >= 2:
+#     print(s.find(item), s.rfind(item))
+
+s = "hello, WORLD! I am learn Python"
+# print(s.endswith("on"))
+# print(s.endswith("lo",3,5))
+
+# print(s.startswith("hello"))
+# print(s.startswith("I am", 14))
+
+# print("aabb123".isalnum()) #состоит из букв или цифр
+# print("23234&*asdad".isalnum())
+
+# print("ASDFdfssdfsd".isalpha()) # проверяет содержит ли только буквы
+# print("ASDFdf1231231ssdfsd".isalpha())
+#
+# print("1123132".isdigit()) # проверяет содержит ли только цифры
+# print("1asd123132".isdigit())
+
+
+# print("asdasdasd121212".islower()) # проверяет содержит ли только буквы в нижнем регистре также могут быть цифры
+# print("asВВВВВasd121212".islower()) #
+
+
+# print("ВВВВВ121212".isupper()) # проверяет содержит ли только буквы в верхнем регистре также могут быть цифры
+# print("ВВВВaaaaВ121212".isupper())
+
+
+# print(" ".isspace()) # проверяет содержит ли из пробелов или знака табуляции или переноса строки
+# print(" a ".isspace())
+
+#
+# print("a".center(10))
+# print("a".center(11, "-"))
+
+# print("     py")
+# print("     py".lstrip())
+# print("py            ".rstrip())
+# print("         py            ".lstrip())
+
+# print("https://www.python.org/".lstrip("th/ps:"))
+print('$py.$$$;'.rstrip("$;"))
+print('$py.$$$;'.lstrip("$;"))
