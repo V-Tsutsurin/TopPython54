@@ -3040,7 +3040,7 @@ locale.setlocale(locale.LC_ALL, "ru")
 # elif s.count(item) >= 2:
 #     print(s.find(item), s.rfind(item))
 
-s = "hello, WORLD! I am learn Python"
+# s = "hello, WORLD! I am learn Python"
 # print(s.endswith("on"))
 # print(s.endswith("lo",3,5))
 
@@ -3078,5 +3078,145 @@ s = "hello, WORLD! I am learn Python"
 # print("         py            ".lstrip())
 
 # print("https://www.python.org/".lstrip("th/ps:"))
-print('$py.$$$;'.rstrip("$;"))
-print('$py.$$$;'.lstrip("$;"))
+# print('$py.$$$;'.rstrip("$;"))
+# print('$py.$$$;'.lstrip("$;"))
+
+# str1 = "Я изучаю Nython. Мне нравиться Nython. Nython очень интересный язык программирования."
+#
+# print(str1.replace("Nython","Python", 1))
+
+# s = '-'
+# seq = ('a',"b","c")
+# print(s.join(seq))
+
+# print('..'.join(['1','2']))
+# print(':'.join({"a":'1',"b":'2'}))
+
+# print("Строка разделенная пробелами".split(" "))
+# print("www.python.org.ru".split(".",4))
+# print("www.python.org".rsplit(".",1))
+# print("www...python...org".rsplit("."))
+
+# a = input("-> ").split()
+# print(a)
+#
+# def name(name):
+#     print(f"{name[0]} {name[1][0]}.{name[2][0]}.")
+#
+# name(a)
+
+# s = "В строке заменить пробелы символом"
+# # print(s.replace(" ", "*"))
+# ls = s.split()
+# print(ls)
+# st = "*".join(ls)
+# print(st)
+
+
+import re
+
+# Регулярные выражения
+# s = "Я ищу совпадения в 2026 года. И я из найду в 2 счёта."
+# reg = 'Я ищу'
+# print(s.find(reg))
+# print(s.find(reg))
+
+# print(re.findall(reg, s)) # возвращает список содержащий все элементы
+# print(re.search(reg, s)) # возвращает первое совпадение
+# print(re.search(reg, s).span()) #(15, 16)
+# print(re.search(reg, s).start()) #15
+# print(re.search(reg, s).end()) #16
+# print(re.search(reg, s).group()) #я
+
+# print(re.match(reg, s)) # для поиска по задонному шаблону только с начала строки
+
+# s = "Я ищу совпадения в 2026 года. И я из найду в 2 счёта."
+# reg = "я"
+# reg = r"\\"
+
+# print(re.split(reg, s))
+# print(re.split(reg, s, maxsplit=1))
+#
+# print(re.sub(reg, "!", s, count=1))
+
+
+# s = "Я ищу совпадения в 2026 года. И я из найду в 2 счёта. 99798784"
+# reg = "206"
+# reg = r"[206]"
+# reg = r"[0-9]"
+# reg = r"[0-9][0-9]"
+# reg = r"[0-9][0-9][0-9][0-9]"
+# reg = r"[12][0-9][0-9][0-9]"
+
+#[] - любой из символов внутри
+
+# reg = r"[а-я]"
+# reg = r"[а-яё]"
+# reg = r"[А-Яа-яё]"
+# reg = r"[А-яё]"
+#
+# print(re.findall(reg, s))
+
+
+# s = "Еда, беду, победа"
+# reg = r"[Ее]д[ау]"
+# print(re.findall(reg, s))
+
+
+# s = "Я ищу со[впаден]ия в 2026 го-да. И я из найду в 2 счёта. 456787"
+# # reg = r"[А-яё.]"
+# # reg = r"[А-яё.]."
+#
+# reg = r"[А-яё.\[\]-]"
+#
+#
+#
+# print(re.findall(reg, s))
+
+
+# s = "Я ищу совпадения в 2026 го-да. И я из найду в 2 счёта. 99798784"
+# reg = r"[^0-9]"
+# # [^abc] - вернет все кроме abc
+# print(re.findall(reg, s))
+
+
+# s = "Час в 24-часовом формате от 00 до 23. 2021-06-15Т21:45. Минуты, в диапазоне от 00 до 59. 2021-06-15Т01:09."
+# reg = r"[0-2][0-9]:[0-5][0-9]"
+#
+# print(re.findall(reg, s))
+
+
+# s = "Я ищу совпадения в 2026 го-да. И_я из \tнайду в 2\n счёта. 99798784"
+# reg = r"\S"
+# #\d - одна цифра [0-9]
+# #\w - одна цифра, буква, символ _ [0-9А-яA-z]
+# #\s - пробельный символ (включая табуляцию и перенос стоки)
+# #\D - все кроме цифр [^0-9]
+# #\W - все кроме цифр, букв, символа _ [^0-9А-яA-z]
+# #\S - все кроме пробельного символа (включая табуляцию и перенос стоки)
+#
+# print(re.findall(reg, s))
+
+
+# s = "Я ищу совпадения в 2026 го-да. И_я из \tнайду в 2\n счёта. 99798784"
+# # reg = r"\AЯ ищу"
+# # reg = r"798784\Z"
+# # reg = r"Я ищу\b"
+# reg = r"8784\B"
+#
+# print(re.findall(reg, s))
+
+
+# s = "Я ищу совпадения в 2026 го-да. И_я из \tнайду в 2\n счёта. 9979878999994"
+# # reg = r"\w+"reg = r"\w+"
+# reg = r"20*"
+# #+ - от 1 до бесконечности повторений
+# #* - от 0 до бесконечности повторений
+# #? - 0 или 1
+#
+# print(re.findall(reg, s))
+
+s = "цифры: 7, +17, -42, 0.0.13, 0.3"
+reg = r"[+-]?[\d.]+"
+
+print(re.findall(reg, s))
