@@ -3148,7 +3148,7 @@ import re
 # reg = r"[0-9][0-9][0-9][0-9]"
 # reg = r"[12][0-9][0-9][0-9]"
 
-#[] - любой из символов внутри
+# [] - любой из символов внутри
 
 # reg = r"[а-я]"
 # reg = r"[а-яё]"
@@ -3216,7 +3216,117 @@ import re
 #
 # print(re.findall(reg, s))
 
-s = "цифры: 7, +17, -42, 0.0.13, 0.3"
-reg = r"[+-]?[\d.]+"
+# s = "цифры: 7, +17, -42, 0.0.13, 0.3"
+# reg = r"[+-]?[\d.]+"
+#
+# print(re.findall(reg, s))
 
-print(re.findall(reg, s))
+# s = "05-03-1987 # Дата рождения"
+# print("Дата рождения:", re.sub("#.*",'',s))
+#
+# # 05.03.1987
+# print("Дата рождения:", re.sub("-",".", re.sub("#.*",'',s)))
+
+# s = 'author=Пушкин А.С.; title = Евгений онегин; price =200; year= 1831'
+# # reg = r"\w+\s*=\s*[^;]+"
+# reg = r"[^;]+"
+# print(re.findall(reg, s))
+
+# s = "24 марта 2026 года"
+# # reg = r"\d\d\d\d"
+# reg = r"\d{2,4}"
+#
+#
+# print(re.findall(reg, s))
+
+
+# s = "+7 499 456-45-78, +74994564578, 7 (499) 456 45 78, 74994564478"
+# reg = r"\+?7\d{10}"
+#
+# print(re.findall(reg, s))
+
+# s = "Я ищу совпадения в 2026 го-да. И_я из \tнайду в 2 счё_та"
+#
+# reg = r"^\w+\s\w+"
+# print(re.findall(reg, s))
+#
+# reg = r"\w+\s\w+$"
+# print(re.findall(reg, s))
+
+# print(re.findall(r"\w+", "12 + qe"))
+# print(re.findall(r"\w+", "12 + qe", flags=re.ASCII))
+# print(re.findall(r"[^А-я]+[0-9]", "12 + йцу"))
+
+# text = "h+ello world"
+# print(re.findall(r"\w\+",text, flags=re.DEBUG))
+
+
+# s = "Я ищу совпадения в 2026 го-да. И_я из \tнайду в 2 счё_та"
+#
+# reg = "я"
+# print(re.findall(reg, s, flags=re.IGNORECASE))
+# print(re.findall(reg, s, re.I))
+
+# text = """
+# one
+# two
+# """
+
+# print(re.findall(r"one",text))
+# print(re.findall(r"one.\w+",text, flags=re.DOTALL))
+# print(re.findall(r"one$",text))
+# print(re.findall(r"one$",text, flags=re.MULTILINE))
+
+# print(re.findall("""[a-z.-]+@[a-z.-]+""", "test@gmail.ru", flags=re.VERBOSE))
+#
+# print(re.findall("""
+# [a-z.-]+ #part1
+# @       # @
+# [a-z.-]+ #part2
+# """, "test@gmail.ru", flags=re.VERBOSE)
+
+
+# text = """Python,
+# python,
+# PYTHON"""
+# # reg = "python"
+# # reg = "^python"
+# # reg = "(?m)python"
+# reg = "(?im)python"
+#
+# print(re.findall(reg, text))
+
+# ^ $
+# def validate_name(name):
+#     return re.findall(r"^[\w-]{3,16}$", name ,re.IGNORECASE)
+#
+# print(validate_name("Python_master"))
+# print(validate_name("@Python_master"))
+# print(validate_name("Pyth@on_master@"))
+# print(validate_name("Python_ma5st&er"))
+
+# text = "<body>Принцип жадности соответствия регулярных выражений</body>"
+# print(re.findall("<.*?>",text))
+
+# greedy - захватывает максиммально возможное число символов
+# ? - lazy - захватывает минимально возможное число символов
+#
+# применяется с
+# *?, +? , ??
+# {m,n}?, {,n}?, {m,}?
+
+# s = "<p> Изображение <img alt='image' src='bg.jpg'> - фоновое изображение </p>"
+# # reg = r"<img[^>]*>"
+# reg = r"<img\s+[^>]*src\s*=\s*[^>]+>"
+#
+# print(re.findall(reg, s))
+# text = "Microsoft Edge удаляет журнал браузера[16], файлы cookie и данные сайтов, а также пароли, адреса и данные ф[17]орм при закрытии всех окон InPrivate. Другие люди, использующие это устройство, не увидят ваши действия по просмотру веб-страниц, но к этим данным все же, вероятно, смогут получить[18][19] доступ учебное заведение, работодатель и поставщик услуг Интернета."
+# print(re.findall(r"\[.*?]", text))
+
+# s = "Вася, Маша, Даша отличники"
+# reg = "Вася|Петя|Маша|Даша"
+# print(re.findall(reg, s))
+
+a = "24-03-2026"
+reg = 
+print(re.findall(reg, a))
