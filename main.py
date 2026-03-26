@@ -1119,6 +1119,7 @@ import math
 
 import time
 from calendar import month
+from itertools import count
 from random import random
 from time import localtime
 
@@ -1155,14 +1156,14 @@ from time import localtime
 # res = time.monotonic() - start
 # print(res,"sec")
 
-import locale
-from tkinter.font import names
-
-from fontTools.misc.cython import returns
-from fontTools.subset.svg import xpath
-from pyparsing import oneOf
-
-locale.setlocale(locale.LC_ALL, "ru")
+# import locale
+# from tkinter.font import names
+#
+# from fontTools.misc.cython import returns
+# from fontTools.subset.svg import xpath
+# from pyparsing import oneOf
+#
+# locale.setlocale(locale.LC_ALL, "ru")
 
 # print(time.strftime("Сегодня %d %B %y"))
 # print(time.strftime("%m/%d/%Y, %H:%M:%S",time.localtime(8845696545)))
@@ -3327,6 +3328,131 @@ import re
 # reg = "Вася|Петя|Маша|Даша"
 # print(re.findall(reg, s))
 
-a = "24-03-2026"
-reg = 
-print(re.findall(reg, a))
+# a = "24-03-2026"
+# reg =
+# print(re.findall(reg, a))
+
+# s = "int = 4, float = 4.0, double = 8.0f"
+# # reg = r"\w+\s*=\s*\d[.\w+]*"
+# # reg = r"int\s*=\s*\d[.\w+]*|float\s*=\s*\d[.\w+]*"
+# reg = r"(?:int|float)\s*=\s*\d[.\w+]*"
+# print(re.findall(reg, s))
+
+# (?: ...) - обозначает что эти группирующие скобки являются не сохраняющими
+
+# s = "127.0.0.1"
+# # s = "192.255.255.255"
+# # reg = r"\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}"
+# reg = r"(?:\d{1,3}.){3}\d{1,3}"
+# print(re.findall(reg, s))
+
+
+#Рекурсия
+
+# def elevator(n):
+#     if n == 0:
+#         print("Вы в подвале")
+#         return
+#     print("=>", n) # 5 4 3 2 1
+#     elevator(n - 1)
+#     print(n, end=" ")
+#
+#
+# n1 = int(input("На каком вы этаже: "))
+#
+# elevator(n1)
+
+#стек
+#1
+#2
+#3
+#4
+#5
+
+# def sum_list(lst):
+#     res = 0
+#     for i in lst:
+#         res = res + i
+#     return res
+#
+# print(sum_list([1,3,5,7,9]))
+
+
+# def sum_list(lst):
+#     if len(lst) == 1:
+#         print(lst, "=>[0]: ", lst[0])
+#         return lst[0]
+#     else:
+#         print(lst, "=>[0]: ", lst[0])
+#         return lst[0] + sum_list(lst[1:])
+#
+# print(sum_list([1,3,5,7,9]))
+#
+# def to_str(n, base):
+#     convert = "0123456789ABCDEF"
+#     if n < base:
+#         return convert[n]
+#     else:
+#         return to_str(n // base, base) + convert[n % base]
+# print(to_str(356,10))
+# print(to_str(255,16)) #FF
+
+# names = ["Adam",["Bob",["Chet","Cat"],"Bard","Bert"],"Alex",["Bea","Bill"],"Ann"]
+
+# print(len(names))
+# print(names[0])
+# print(isinstance(names[0],list))
+# print(names[1])
+# print(isinstance(names[1],list))
+# print(names[1][1])
+# print(isinstance(names[1][1],list))
+# print(names[1][1][0])
+# print(isinstance(names[1][1][0],list))
+
+
+# def func(item_list):
+#     count = 0
+#     for i in item_list:
+#         if isinstance(i, list):
+#             for j in i:
+#                 if isinstance(j, list):
+#                     for k in j:
+#                         count += 1
+#                 else:
+#                     count += 1
+#         else:
+#             count += 1
+#     return count
+#
+# print(func(names))
+
+# names = ["Adam",["Bob",["Chet","Cat"],"Bard","Bert"],"Alex",["Bea","Bill"],"Ann"]
+#
+# def count_items(item_list):
+#     count = 0
+#     for item in item_list:
+#         if isinstance(item, list):
+#             count += count_items(item)
+#         else:
+#             count += 1
+#     return count
+#
+# print(count_items(names))
+
+
+# def remove(text):
+#     if not text:
+#         return ""
+#     if text[0] == '\t' or text[0] == " ":
+#         return remove(text[1:])
+#     else:
+#         return text[0] + remove(text[1:])
+#
+# print(remove(" Hello\tWorld "))
+
+f = open('text.txt', "r")
+
+print(f)
+print(*f)
+
+f.close()
