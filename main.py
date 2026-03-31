@@ -3347,7 +3347,7 @@ import re
 # print(re.findall(reg, s))
 
 
-#Рекурсия
+# Рекурсия
 
 # def elevator(n):
 #     if n == 0:
@@ -3362,12 +3362,12 @@ import re
 #
 # elevator(n1)
 
-#стек
-#1
-#2
-#3
-#4
-#5
+# стек
+# 1
+# 2
+# 3
+# 4
+# 5
 
 # def sum_list(lst):
 #     res = 0
@@ -3450,9 +3450,177 @@ import re
 #
 # print(remove(" Hello\tWorld "))
 
-f = open('text.txt', "r")
+# f = open('text.txt', "r")
 
-print(f)
-print(*f)
+# print(f)
+# print(*f)
+#
+# f.close()
 
-f.close()
+# f = open(r'C:\Users\teacher\python54\test.txt', 'r')
+#
+# print(f)
+# print(*f)
+#
+# f.close()
+
+# print(f.closed)
+# print(f.mode)
+# print(f.name)
+# print(f.encoding)
+
+# print(f.read())
+# print(f.read(3))
+
+# print(f.readline())
+# print(f.readline(3))
+# print(f.readline())
+# print(f.readline())
+
+# f = open(r"text.txt")
+# try:
+#     print(f.read())
+# finally:
+#     f.close()
+
+# print(f.readlines())
+# print(f.readlines(5))
+
+# for line in f:
+#     print(line)
+
+# f = open(r"text.txt")
+# print(len(f.readlines()))
+
+# cnt = 0
+# for lene in f:
+#     cnt += 1
+
+# cnt = 0
+# s = f.readline()
+# while s !='':
+#     s = f.readline()
+#     cnt +=1
+#
+# print(cnt)
+
+# f = open(r"text.txt", 'w')
+# f.write("Python!")
+# f.write("\nNew text")
+# f.close()
+
+# f = open("xyz.txt", 'a')
+#
+# # f.write("Hello World!")
+# # f.write("\nNew text")
+# # print(f.write("\nPYTHON"))
+# lines = ["This is line 1","This is line 2","This is line 3"]
+# f.writelines(lines)
+# f.close()
+
+# f = open("xyz.txt", 'w')
+# lst = [str(i) + str(i-1) for i in range(1,20)]
+# print(lst)
+# for index in lst:
+#     f.write(index + '\t')
+# f.close()
+
+
+# my_file = open("text2.txt", 'w')
+# my_file.write('Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать список в файл;')
+# my_file.close()
+
+# my_file = open("text2.txt", 'r')
+# read_file = my_file.readlines()
+# print(read_file)
+# for i in range(len(read_file)):
+#     if read_file[i] == "изменить строку в списке;\n":
+#         read_file[i] = "Hello World\n"
+# print(read_file)
+# my_file.close()
+# print(read_file)
+#
+# my_file = open("text2.txt", 'w')
+# my_file.writelines(read_file)
+# my_file.close()
+
+# my_file = open("text3.txt", 'w')
+# my_file.write('Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать список в файл;')
+# my_file.close()
+#
+# my_file = open("text3.txt", 'r')
+# read_file = my_file.readlines()
+# print(read_file)
+# pos = int(input("Введите индес строки: "))
+# if 0 <= pos <= len(read_file):
+#     del  read_file[pos]
+# else:
+#     print("Неверный индекс")
+#
+# print(read_file)
+# my_file.close()
+# print(read_file)
+#
+# my_file = open("text3.txt", 'w')
+# my_file.writelines(read_file)
+# my_file.close()
+
+# f = open("text.txt", 'r')
+# print(f.read(3))
+# print(f.tell()) # Возвращает позицию курсора
+# print(f.seek(1)) # Перемещает курсор на позицию
+# print(f.read())
+# print(f.tell())
+# f.close()
+
+
+# f = open("text.txt", 'r+')
+# print(f.write("I am learning Python!"))
+# print(f.seek(3))
+# print(f.write("-new string-"))
+# print(f.tell())
+# print(f.write("=PYTHON="))
+# print(f.tell())
+# f.close()
+
+
+# with open("text.txt", 'w+') as f:
+#     print(f.write("0123456789"))
+#
+# with open("text.txt", 'r') as f:
+#     for line in f:
+#         print(line[:6])
+#
+# file_name = "res.txt"
+# lst = [2.8, 5.4, 6.7, 1.9, 7.999, 58.8445]
+#
+# def get_line(lt):
+#     lt = list(map(str, lt))
+#     # return lt
+#     return " ".join(lt)
+#
+# # print(get_line(lst))
+#
+# with open(file_name, "w") as f:
+#     f.write(get_line(lst))
+#
+# print("OK")
+
+# file_name = "res.txt"
+#
+# with open(file_name, "r") as f:
+#     nums = f.read()
+#
+# print(nums)
+# num_list = list(map(float, nums.split()))
+# print(num_list)
+# print(len(num_list))
+
+
+# with open("test.txt", "r") as f:
+#     w = f.read().split()
+#     print(w)
+#     max_length = len(max(w, key=len))
+#     print(max_length)
+#     res = [word for word in w if len(word) == max_length]
+#     print(res)
