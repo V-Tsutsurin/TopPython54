@@ -3624,3 +3624,117 @@ import re
 #     print(max_length)
 #     res = [word for word in w if len(word) == max_length]
 #     print(res)
+
+# text ="Cтрока №1\nCтрока №2\nCтрока №3\nCтрока №4\nCтрока №5\nCтрока №6\nCтрока №7\nCтрока №8\nCтрока №9\nCтрока №0\n"
+#
+# with open('one.txt', 'w') as f:
+#     f.write(text)
+#
+# read_file = 'one.txt'
+# write_file = 'two.txt'
+#
+# with open(read_file, 'r') as fr,open(write_file, 'w') as fw:
+#     for line in fr:
+#         line = line.replace("Cтрока", "Линия -> ")
+#         fw.write(line)
+#
+# with open(write_file, "r") as fw:
+#     for line in fw:
+#         print(line,end='')
+
+# f = open("test.txt")
+# line = 0
+#
+# for i in f:
+#     line +=1
+#     word = 0
+#     flag = 0
+#
+#     for j in i:
+#         if j !=" " and flag == 0:
+#             word +=1
+#             flag = 1
+#
+#         elif j == " ":
+#             flag = 0
+#
+#
+#
+#     print(i, len(i), "симв.", word, "сл.")
+#
+# print(line, "строки")
+#
+# f.close()
+
+# Модули os и os.path
+
+import os
+import os.path
+
+# print("Текущая директория: ", os.getcwd())
+# print(os.listdir()) # Возвращает список файлов и папок, находяшихся в текушей директории(по умолчанию) или
+# в директории по указанному пути
+# print(os.listdir(r"..\..\..\..\.."))
+
+# os.mkdir("folder") #создает директорию по указанному пути
+
+# os.makedirs("nested1/nested2/nested3") #создает вложенные папки
+# os.makedirs("nested1/nested2/nested4")
+
+# os.remove("xyz.txt") # Удаляет файл(в обход корзины и безвозвратно)
+
+# os.rename('nested1', "test") # Переименование папки или файла
+# os.rename('text.txt', "text/text1.txt")
+
+# os.rmdir("text")
+
+# for root, dirs, files in os.walk("test", topdown=False):
+#     print("Root: ", root)
+#     print("\tSubdirs: ", dirs)
+#     print("\t\tFiles: ", files)
+
+# os.makedirs("Work/F1/f3")
+# os.makedirs("Work/F2/f3")
+# os.makedirs("Work/F3")
+
+# def remove_empty_dirs(root_tres):
+#     for root, dirs, files in os.walk(root_tres):
+#         if not os.listdir(root):
+#             os.rmdir(root)
+#             print(f"Директория {root} удалена.")
+#
+# remove_empty_dirs("Work")
+
+# def delete_folder(folder_path):
+#     if not os.path.exists(folder_path):
+#         print(f"Папка ={folder_path}= не существует")
+#         return False
+#
+#     if not  os.path.isdir(folder_path):
+#         print(f"={folder_path}= не папка")
+#         return False
+#
+#     for root, dirs, files in os.walk(folder_path,topdown=False):
+#         for file in files:
+#             print(f"Удалено {file} файл")
+#             file_path = os.path.join(root,file)
+#             os.remove(file_path)
+#
+#         for dirr in dirs:
+#             print(f"Удалено {dirr} папка")
+#             dir_path = os.path.join(root, dirr)
+#             os.rmdir(dir_path)
+#
+#     os.rmdir(folder_path)
+#     print(f"Папка {folder_path} успешно удалена")
+#     return True
+#
+# delete_folder("Base")
+
+# print(os.path.split(r"C:\Users\teacher\python54\TopPython54\res.txt"))
+# print(os.path.split(r"C:\Users\teacher\python54\TopPython54\\"))
+#
+# print(os.path.dirname(r"C:\Users\teacher\python54\TopPython54\res.txt"))
+# print(os.path.basename(r"C:\Users\teacher\python54\TopPython54\res.txt"))
+
+print(os.path.join("C:\\Users", "teacher", "python54", "TopPython54", "res.txt"))
