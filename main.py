@@ -3671,6 +3671,7 @@ import re
 import os
 import os.path
 
+
 # print("Текущая директория: ", os.getcwd())
 # print(os.listdir()) # Возвращает список файлов и папок, находяшихся в текушей директории(по умолчанию) или
 # в директории по указанному пути
@@ -3737,4 +3738,87 @@ import os.path
 # print(os.path.dirname(r"C:\Users\teacher\python54\TopPython54\res.txt"))
 # print(os.path.basename(r"C:\Users\teacher\python54\TopPython54\res.txt"))
 
-print(os.path.join("C:\\Users", "teacher", "python54", "TopPython54", "res.txt"))
+# print(os.path.join("C:\\Users", "teacher", "python54", "TopPython54", "res.txt"))
+
+# print(os.path.exists(r"one1.txt"))
+# print(os.path.exists(r"C:\Users\teacher\python54\TopPython54\test\nested2\nested3\text1.txt"))
+
+# file = "one.txt"
+#
+# print(os.path.getatime(file))
+# print(os.path.getmtime(file))
+# print(os.path.getctime(file))
+# print(os.path.getsize(file))
+
+# import time
+#
+# path =r"C:\Program Files\JetBrains\PyCharm Community Edition 2024.2.2\plugins\python-ce\helpers\virtualenv-20.13.0.pyz"
+#
+# size = os.path.getsize(path)
+# k_size = size // 1024
+#
+# print(f"Размер {k_size} kb")
+#
+# c_time = os.path.getctime(path)
+# print(c_time)
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(c_time)))
+
+# print(os.path.isfile(r"C:\Program Files\JetBrains\PyCharm Community Edition 2024.2.2\plugins\python-ce\helpers\virtualenv-20.13.0.pyz"))
+# print(os.path.isdir(r"C:\Program Files\JetBrains\PyCharm Community Edition 2024.2.2\plugins\python-ce\helpers"))
+
+
+# ООП - объектно ориентированно программирование
+
+# свойства == переменные
+# методы == функции
+#
+# атрибуты == свойства + методы
+
+# class Point:
+#     """Класс для представления координат на плоскости"""
+#     x = 1
+#     y = 1
+#
+#
+# # print(Point.__doc__)
+# # print(Point.__name__)
+# # print(dir(Point))
+#
+# p1 = Point()
+# # print(type(p1))
+# # print(p1.x, p1.y)
+# Point.x = 100
+# p1.x = 200
+# p1.y = 5
+# # print(p1.x, p1.y)
+# # print("ID POINT",id(Point))
+# # print("ID p1",id(p1))
+# print(p1.__dict__)
+#
+#
+# p2 = Point()
+# # print(p2.x, p2.y)
+# print(p2.__dict__)
+# print(Point.__dict__)
+# # print("ID p2",id(p2))
+
+class Point:
+    """Класс для представления координат на плоскости"""
+    x = 1
+    y = 1
+
+    def set_cords(self):
+        # print(self.__dict__)
+        print("Hello World")
+
+
+p1 = Point()
+p1.x = 200
+p1.y = 5
+p1.set_cords()
+Point.set_cords(p1)
+
+p2 = Point()
+p2.set_cords()
+print(p2.x,p2.y)
+
