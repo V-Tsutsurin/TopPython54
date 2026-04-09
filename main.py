@@ -3802,23 +3802,285 @@ import os.path
 # print(Point.__dict__)
 # # print("ID p2",id(p2))
 
+# class Point:
+#     """Класс для представления координат на плоскости"""
+#     x = 1
+#     y = 1
+#
+#     def set_cords(self):
+#         # print(self.__dict__)
+#         print("Hello World")
+#
+#
+# p1 = Point()
+# p1.x = 200
+# p1.y = 5
+# p1.set_cords()
+# Point.set_cords(p1)
+#
+# p2 = Point()
+# p2.set_cords()
+# print(p2.x,p2.y)
+
+
+# class Point:
+#     x = 1
+#     y = 1
+#
+#     def set_cords(self, x ,y):
+#         self.x = x
+#         self.y = y
+#
+#
+# p1 = Point()
+# p1.set_cords(5, 10)
+# print(p1.__dict__)
+#
+# p2 = Point()
+# p2.set_cords(3, 6)
+# print(p2.__dict__)
+#
+# Point.set_cords(p2,2,7)
+# print(p2.__dict__)
+
+
+# class Human:
+#     name = "name"
+#     birthday = "00.00.0000"
+#     phohe = "00-00-00"
+#     coutry = "coutry"
+#     city = "city"
+#     address = "street, house"
+#
+#     def input_info(self, name, birthday, phohe, coutry, city, address):
+#         self.name = name
+#         self.birthday = birthday
+#         self.phohe = phohe
+#         self.coutry = coutry
+#         self.city = city
+#         self.address = address
+#
+#     def print_info(self):
+#         print("Персональные данные".center(40, "*"))
+#         print(f"Имя {self.name} \nДата рождения {self.birthday}\n"
+#               f"Номер телефона {self.phohe} \nСтрана {self.coutry}\n"
+#               f"Город {self.city} \nДомашний алрес {self.address}"
+#               )
+#         print("*" * 40)
+#
+#     def set_name(self, name):
+#         self.name = name
+#
+#     def get_name(self):
+#         return self.name
+#
+#     def set_birthday(self, birthday):
+#         self.birthday = birthday
+#
+#     def get_birthday(self):
+#         return self.birthday
+#
+#
+# h1 = Human()
+# h1.input_info("Юля", "25.05.1986", "45-56-67", "Россия", "СПБ", "Невский проспект, 122")
+# h1.print_info()
+# h1.set_name("Петр")
+# print(h1.get_name())
+# h1.set_birthday("19.12.1990")
+# print(h1.get_birthday())
+# print(h1.__dict__)
+
+
+# class Point:
+#     x = 1
+#     y = 1
+#
+#
+# p1 = Point()
+# p1.x = 5
+# p1.y = 10
+# print(p1.__dict__)
+# print(p1.x)
+# # print(getattr(p1, "x"))
+# # # print(p1.z)
+# # print(getattr(p1, "z", "Нет атрибута"))
+# # print(hasattr(p1, "z"))
+# # p1.z = 7
+# setattr(p1, "z", 7)
+# # setattr(Point, "z", 7)
+# delattr(p1, "z")
+# print(p1.__dict__)
+
+
+# class Person:
+#     skill = 10
+#     name = ""
+#     surname = ""
+#
+#     def prin_info(self,name, surname):
+#         print("Данные сотрудника",self.name, self.surname)
+#
+#     def add_skill(self, k):
+#         self.skill += k
+#         print("Квалификация сотрудника", self.skill,"\n")
+#
+#
+# p1 = Person()
+# p1.prin_info("Viktor", "Reznik")
+# p1.add_skill(3)
+#
+# p2 = Person()
+# p2.prin_info("Anna", "Dolgih")
+# p2.add_skill(2)
+
+# Специальные методы
+# - конструктор (__new__)
+# - инструктор (__init__)
+# - деструктор (__del__)
+
+
+# class Point:
+#     # def __new__(cls, *args, **kwargs):
+#     #     print("this is constructor")
+#     #     return super().__new__(cls)
+#
+#     def __init__(self):
+#         print("this is initializator")
+#
+#
+# p1 = Point()
+
+
+# class Person:
+#     skill = 10
+#
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname= surname
+#
+#     def prin_info(self):
+#         print("Данные сотрудника",self.name, self.surname)
+#
+#     def add_skill(self, k):
+#         self.skill += k
+#         print("Квалификация сотрудника", self.skill,"\n")
+#
+#
+# p1 = Person("Viktor", "Reznik")
+# p1.prin_info()
+# p1.add_skill(3)
+#
+# p2 = Person("Anna", "Dolgih")
+# p2.prin_info()
+# p2.add_skill(2)
+
+# class Point:
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#     def __del__(self):
+#         print("Удаление экземпляра " + self.__class__.__name__)
+#
+#
+# p1 = Point(5, 10)
+# print(p1.__dict__)
+# p1 = 0
+# del  p1
+# print(p1.__dict__)
+# print(p1.x)
+
+# class Point:
+#     count = 0 # Статическое свойство
+#
+#
+#     def __init__(self, x=0, y=0): # Динамические свойства
+#         self.x = x
+#         self.y = y
+#         # self.count += 1
+#         Point.count += 1
+#
+#
+#
+#
+# p1 = Point(5, 10)
+# print(p1.count)
+# p2 = Point(15, 20)
+# p3 = Point(25, 30)
+#
+# print(Point.count)
+# print(p1.count)
+
+# class Robot:
+#     k = 0
+#
+#     def __init__(self, name):
+#         self.name = name
+#         print("Инициализация робота", self.name)
+#         Robot.k +=1
+#
+#     def say_hi(self):
+#         print("Привет! Меня зовут ", self.name)
+#
+#     def __del__(self):
+#         print(self.name, "выключается")
+#         Robot.k -= 1
+#         if Robot.k == 0:
+#             print(self.name, "был поледний робот")
+#         else:
+#             print("Работающих роботов", Robot.k)
+#
+#
+# r1 = Robot("R2-D2")
+# r1.say_hi()
+# print("Численность роботов", Robot.k)
+#
+# r2 = Robot("C-3PO")
+# r2.say_hi()
+# print("Численность роботов", Robot.k)
+#
+# r3 = Robot("Е-8WO")
+# r3.say_hi()
+# print("Численность роботов", Robot.k)
+#
+# print()
+# print("Роботы закончили работу")
+# del r1
+# del r2
+# del r3
+# print("Численность роботов", Robot.k)
+
+# Инкапсуляция - способность скрывать свойства от пользователя для защиты от изменений
+# public (self.x) публичные свойства
+# protected (self._x) используются при наследовании
+# private (self.__x) Защищенные свойства
+
 class Point:
-    """Класс для представления координат на плоскости"""
-    x = 1
-    y = 1
+    def __init__(self, x=0, y=0):
+        self.__x = x
+        self.__y = y
 
-    def set_cords(self):
-        # print(self.__dict__)
-        print("Hello World")
+    def set_coords(self, x,y):
+        self.__x = x
+        self.__y = y
+
+    def get_coords(self):
+        return self.__x, self.__y
+
+    def set_x(self, x):
+        self.__x = x
+
+    def set_y(self, y):
+        self.__y = y
 
 
-p1 = Point()
-p1.x = 200
-p1.y = 5
-p1.set_cords()
-Point.set_cords(p1)
 
-p2 = Point()
-p2.set_cords()
-print(p2.x,p2.y)
-
+p1 = Point(5, 10)
+print(p1.__dict__)
+p1.set_coords(1,2)
+# p1.__x = 100
+# p1.__y = 100
+print(p1.get_coords())
+print(p1.__dict__)
+# print(p1.__x, p1.__y)
