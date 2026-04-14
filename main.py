@@ -4056,31 +4056,267 @@ import os.path
 # protected (self._x) используются при наследовании
 # private (self.__x) Защищенные свойства
 
-class Point:
-    def __init__(self, x=0, y=0):
-        self.__x = x
-        self.__y = y
+# class Point:
+#     def __init__(self, x, y):
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#         else:
+#             print("Координаты должны быть числами")
+#
+#     def __check_value(q):
+#         if isinstance(q, int) or isinstance(q, float):
+#             return True
+#         return False
+#
+#     def set_coords(self, x, y):
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#         else:
+#             print("Координаты должны быть числами")
+#
+#     def get_coords(self):
+#         return self.__x, self.__y
+#
+#     def set_x(self, x):
+#         if Point.__check_value(x):
+#             self.__x = x
+#         else:
+#             print("Координаты должны быть числами")
+#
+#     def set_y(self, y):
+#         if Point.__check_value(y):
+#             self.__y = y
+#         else:
+#             print("Координаты должны быть числами")
+#
+#     def get_x(self):
+#         return self.__x
+#
+#     def get_y(self):
+#         return self.__y
+#
+#
+# p1 = Point(5, 10)
+# print(p1.__dict__)
+# p1.set_coords(1, 2)
+# # p1.__x = 100
+# # p1.__y = 100
+# p1.set_x(4)
+# print(p1.get_coords())
+# print(p1.__dict__)
+# print(p1.get_x())
+# # print(p1.__x, p1.__y)
 
-    def set_coords(self, x,y):
-        self.__x = x
-        self.__y = y
 
-    def get_coords(self):
-        return self.__x, self.__y
+# class Car:
+#     def __init__(self, name, year, model, power, color, price):
+#         self.__name = self.__model = self.__color = "Некорректные данные"
+#         self.__year = self.__power = self.__price = 0
+#
+#         if Car.__check_value_str(name):
+#             self.__name = name
+#         if Car.__check_value_int(year):
+#             self.__year = year
+#         if Car.__check_value_str(model):
+#             self.__model = model
+#         if Car.__check_value_int(power):
+#             self.__power = power
+#         if Car.__check_value_str(color):
+#             self.__color = color
+#         if Car.__check_value_int(power):
+#             self.__price = price
+#
+#     def set_name(self,name):
+#         if Car.__check_value_str(name):
+#             self.__name = name
+#
+#     def get_name(self):
+#         return self.__name
+#
+#     def print_info(self):
+#         print(f"Название {self.__name}")
+#         print(f"Год выпуска {self.__year}")
+#         print(f"Производитель {self.__model}")
+#         print(f"Мощность двигателя {self.__power}")
+#         print(f"Цвет машины {self.__color}")
+#         print(f"Цена {self.__price}")
+#
+#     def __check_value_str(s):
+#         if not isinstance(s, str):
+#             print("Данные должны быть строкой")
+#             return False
+#         return True
+#
+#     def __check_value_int(s):
+#         if not isinstance(s, int):
+#             print("Данные должны быть числом")
+#             return False
+#         return True
+#
+#
+# c1 = Car("X7 M50i", "2021", "BMW", 530, "white", 10790000)
+# c1.print_info()
+# c1.set_name("X5")
+# print("=" * 40)
+# print(c1.get_name())
 
-    def set_x(self, x):
-        self.__x = x
+# class Point:
+#     # __slots__ = ['__x','__y'] # устнавливает ограничения на свойства
+#
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __set_x(self, x):
+#         print("__set_x")
+#         self.__x = x
+#
+#     def __get_x(self):
+#         print("__get_x")
+#         return self.__x
+#
+#     def __del_x(self):
+#         print("__del_x")
+#         del self.__x
+#
+#     cord_x = property(__get_x, __set_x, __del_x)
+#
+# p1 = Point(5, 10)
+# print(p1.__dict__)
+#
+# print("=" * 35)
+#
+# p1.cord_x = 100
+# print(p1.cord_x)
+# del p1.cord_x
+# p1.cord_x = 33
+# print(p1.__dict__)
 
-    def set_y(self, y):
-        self.__y = y
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
+#
+#     @property
+#     def cord_x(self): #__get_x
+#         print("__get_x")
+#         return self.__x
+#
+#     @cord_x.setter
+#     def cord_x(self, x): #__set_x
+#         print("__set_x")
+#         self.__x = x
+#
+#     @cord_x.deleter
+#     def cord_x(self): # __del_x
+#         print("__del_x")
+#         del self.__x
+#
+#     # cord_x = property(__get_x, __set_x, __del_x)
+#
+# p1 = Point(5, 10)
+# print(p1.__dict__)
+#
+# print("=" * 35)
+#
+# p1.cord_x = 35
+# print(p1.cord_x)
+# del p1.cord_x
+# p1.cord_x = 88
+# print(p1.__dict__)
+#
+#
+# class Person:
+#     def __init__(self, name, old):
+#         self.__name = name
+#         self.__old = old
+#
+#     @property
+#     def name(self):
+#         return self.__name
+#
+#     @name.setter
+#     def name(self, name):
+#         self.__name = name
+#
+#     @name.deleter
+#     def name(self):
+#         del self.__name
+#
+#     @property
+#     def old(self):
+#         return self.__old
+#
+#     @old.setter
+#     def old(self,old):
+#         self.__old = old
+#
+#     @old.deleter
+#     def old(self):
+#         del self.__old
+#
+# p1 = Person("Irina", 26)
+# print(p1.name)
+# p1.name = "igor"
+# p1.old = 30
+# del p1.name
+# del p1.old
+#
+# p1.name = "Ivan"
+# p1.old = 55
+# print(p1.__dict__)
 
 
 
-p1 = Point(5, 10)
-print(p1.__dict__)
-p1.set_coords(1,2)
-# p1.__x = 100
-# p1.__y = 100
-print(p1.get_coords())
-print(p1.__dict__)
-# print(p1.__x, p1.__y)
+# class Point:
+#     __count = 0 # Статическое свойство
+#
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
+#         Point.__count += 1
+#
+#     @staticmethod
+#     def get_count():
+#         return Point.__count
+#
+#
+# p1 = Point()
+# print("p1 = ", p1.get_count())
+# p2= Point()
+# print("p2 = ", Point.get_count())
+# p3 = Point()
+# print("p3 = ", p1.get_count())
+
+# class Point:
+#     __count = 0 # Статическое свойство
+#
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
+#         Point.__count += 1
+#
+#     @staticmethod
+#     def get_count():
+#         return Point.__count
+#
+#
+# p1 = Point()
+# print("p1 = ", Point.get_count())
+# p2= Point()
+# print("p2 = ", Point.get_count())
+# p3 = Point()
+# print("p3 = ", p1.get_count())
+
+class Change:
+    @staticmethod
+    def inc(x):
+        return x + 1
+
+    @staticmethod
+    def dec(x):
+        return x - 1
+
+print(Change.inc(10), Change.dec(10))
