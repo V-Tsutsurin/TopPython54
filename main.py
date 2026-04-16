@@ -4269,7 +4269,6 @@ import os.path
 # print(p1.__dict__)
 
 
-
 # class Point:
 #     __count = 0 # Статическое свойство
 #
@@ -4310,13 +4309,177 @@ import os.path
 # p3 = Point()
 # print("p3 = ", p1.get_count())
 
-class Change:
-    @staticmethod
-    def inc(x):
-        return x + 1
+# class Change:
+#     @staticmethod
+#     def inc(x):
+#         return x + 1
+#
+#     @staticmethod
+#     def dec(x):
+#         return x - 1
+#
+# print(Change.inc(10), Change.dec(10))
 
-    @staticmethod
-    def dec(x):
-        return x - 1
+#
+# class Date:
+#     def __init__(self, day=0, month=0, year=0):
+#         self.day = day
+#         self.month = month
+#         self.year = year
+#
+#     def string_to_db(self):
+#         return f"{self.day}-{self.month}-{self.year}"
+#
+#     @classmethod
+#     def from_string(cls, data_as_string):
+#         d, m, y = map(int, data_as_string.split("."))
+#         return cls(d, m, y)
+#
+#     @staticmethod
+#     def is_data_valid(data_as_string):
+#         if data_as_string.count(".") == 2:
+#             d, m, y = map(int, data_as_string.split("."))
+#             return d <= 31 and m <= 12 and y <= 2500
+#
+# dates = [
+#     "16.04.2025",
+#     "16-04-2025",
+#     "04.16.2025",
+#     "26.04.2025"
+# ]
+#
+# for string_data in dates:
+#     if Date.is_data_valid(string_data):
+#         data = Date.from_string(string_data)
+#         string_to_db = data.string_to_db()
+#         print(string_to_db)
+#     else:
+#         print("Некорректная дата")
 
-print(Change.inc(10), Change.dec(10))
+# class Account:
+#     rate_usd = 0.013
+#     rate_eur = 0.011
+#     suffix = "RUB"
+#     suffix_usd = "USD"
+#     suffix_eur = "EUR"
+#
+#     def __init__(self, num, surname, percent, value=0):
+#         self.__num = num
+#         self.surname = surname
+#         self.percent = percent
+#         self.value = value
+#         print(f"Счет #{self.num} принадлежащий {self.surname} был открыт.")
+#         print("*" * 40)
+#
+#     def print_balance(self):
+#         print(f"Текущий баланс {self.value} {Account.suffix}")
+#
+#     def prin_info(self):
+#         print(f"Информация о счете")
+#         print('-' * 30)
+#         print(f"# {self.num}")
+#         print(f"Владелец: {self.surname}")
+#         self.print_balance()
+#         print(f"Проценты: {self.percent:.0%}")
+#         print('-' * 30)
+#
+#     @staticmethod
+#     def convert(value, rate):
+#         return value * rate
+#
+#     def convert_to_usd(self):
+#         usd_val = Account.convert(self.value, Account.rate_usd)
+#         print(f'Состояние счета: {usd_val} {Account.suffix_usd}')
+#
+#     def convert_to_eur(self):
+#         eur_val = Account.convert(self.value, Account.rate_eur)
+#         print(f'Состояние счета: {eur_val} {Account.suffix_eur}')
+#
+#
+#     @classmethod
+#     def set_usd_rate(cls, rate):
+#         cls.rate_usd = rate
+#
+#     @classmethod
+#     def set_eur_rate(cls, rate):
+#         cls.rate_eur = rate
+#
+#     def edit_owner(self, surname):
+#         self.surname = surname
+#
+#     def add_percents(self):
+#         self.value += self.percent * self.value
+#         print(f"Проценты были успешно выплачены")
+#         self.print_balance()
+#
+#     def withdraw_money(self, val):
+#         if val > self.value:
+#             print(f"К сожалению у вас нет {val} {Account.suffix}")
+#         else:
+#             self.value -= val
+#             print(f"{val} {Account.suffix} было успешно снято!")
+#         self.print_balance()
+#     def add_money(self, val):
+#         self.value += val
+#         print(f"{val} {Account.suffix} было успешно добавленно!")
+#         self.print_balance()
+#
+#     def __del__(self):
+#         print("*" * 50)
+#         print(f"Счет #{self.num} принадлежащий {self.surname} был закрыт.")
+#
+# acc = Account("123456", "Долгих", 0.03, 1000)
+# acc.prin_info()
+# acc.convert_to_usd()
+# acc.convert_to_eur()
+# print()
+# Account.set_usd_rate(2)
+# acc.convert_to_usd()
+# Account.set_eur_rate(3)
+# acc.convert_to_eur()
+#
+# acc.edit_owner("Дюма")
+# acc.prin_info()
+#
+# print()
+# acc.add_percents()
+# print()
+# acc.withdraw_money(5000)
+# acc.withdraw_money(1000)
+# print()
+# acc.add_money(5000)
+import re
+
+
+class UserData:
+    def __init__(self, fio, old, ps, weight):
+        self.verify_fio(fio)
+        self.verify_old(old)
+
+        self.__fio = fio
+        self.__old = old
+        self.__ps = ps
+        self.__weight = weight
+
+    @classmethod
+    def verify_fio(cls, fio):
+        if not isinstance(fio, str):
+            raise TypeError("ФИО должно быть строкой")
+        f = fio.split()
+        if len(f) != 3:
+            raise TypeError("Неверный формат ФИО")
+        letters = "".join(re.findall(r"[a-zа-яё-]", fio, flags=re.IGNORECASE))
+        for s in f:
+            if len(s.strip(letters)) != 0:
+                raise TypeError("В ФИО можно использовать только буквы и дефис")
+
+    @classmethod
+    def verify_old(cls, old):
+        if not isinstance(old, int) or old < 18 or old > 100:
+            raise TypeError("Возраст должен быть числом в диапазоне от 18 до 100")
+
+
+
+
+
+p1 = UserData("Иванов Иван Иванович", 26, "1234 567890", 80.1)
