@@ -4448,38 +4448,209 @@ import os.path
 # acc.withdraw_money(1000)
 # print()
 # acc.add_money(5000)
-import re
+# import re
+#
+#
+# class UserData:
+#     def __init__(self, fio, old, ps, weight):
+#         # self.verify_fio(fio)
+#         # self.verify_old(old)
+#         # self.verify_ps(ps)
+#         # self.verify_weight(weight)
+#         #
+#         # # self.__fio = fio
+#         # self.__old = old
+#         # self.__ps = ps
+#         # self.__weight = weight
+#
+#         self.fio = fio
+#         self.old = old
+#         self.ps = ps
+#         self.weight = weight
+#
+#     @classmethod
+#     def verify_fio(cls, fio):
+#         if not isinstance(fio, str):
+#             raise TypeError("ФИО должно быть строкой")
+#         f = fio.split()
+#         if len(f) != 3:
+#             raise TypeError("Неверный формат ФИО")
+#         letters = "".join(re.findall(r"[a-zа-яё-]", fio, flags=re.IGNORECASE))
+#         for s in f:
+#             if len(s.strip(letters)) != 0:
+#                 raise TypeError("В ФИО можно использовать только буквы и дефис")
+#
+#     @classmethod
+#     def verify_old(cls, old):
+#         if not isinstance(old, int) or old < 18 or old > 100:
+#             raise TypeError("Возраст должен быть числом в диапазоне от 18 до 100")
+#
+#     @classmethod
+#     def verify_ps(cls, ps):
+#         if not isinstance(ps, str):
+#             raise TypeError("Паспорт должен быть строкой")
+#         s = ps.split()
+#         # print(s)
+#         if len(s) != 2 or len(s[0]) != 4 or len(s[1]) != 6:
+#             raise TypeError("Неверный формат паспорта")
+#         for p in s:
+#             if not p.isdigit():
+#                 raise TypeError("Серия и номер должны быть числами")
+#
+#     @classmethod
+#     def verify_weight(cls, w):
+#         if not isinstance(w, float) or w < 50:
+#             raise TypeError("Вес должен быть вешественным число от 50 кг")
+#
+#     @property
+#     def fio(self):
+#         return self.__fio
+#
+#     @fio.setter
+#     def fio(self, fio):
+#         self.verify_fio(fio)
+#         self.__fio = fio
+#
+#     @property
+#     def old(self):
+#         return self.__old
+#
+#     @old.setter
+#     def old(self, old):
+#         self.verify_old(old)
+#         self.__old = old
+#
+#     @property
+#     def ps(self):
+#         return self.__ps
+#
+#     @ps.setter
+#     def ps(self, ps):
+#         self.verify_ps(ps)
+#         self.__ps = ps
+#
+#     @property
+#     def weight(self):
+#         return self.__weight
+#
+#     @weight.setter
+#     def weight(self, weight):
+#         self.verify_weight(weight)
+#         self.__weight = weight
+#
+#
+# p1 = UserData("Иванов Иван Иванович", 26, "1234 567890", 80.1)
+# print(p1.__dict__)
+# p1.fio =  "Петров Петр Петрович"
+# print(p1.fio)
+# p1.old = 30
+# p1.ps = "4321 987654"
+# p1.weight = 70.0
+#
+# print(p1.__dict__)
+
+# class Point(object):
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+#
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = "green", width: int =1):
+#         print("Инициализатор Prop")
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self.__width = width
+#
+#     def get_width(self):
+#         return self.__width
+#
+#
+# class Line(Prop):
+#     def __init__(self, *args):
+#         print("Инициализатор класса Line")
+#         # Prop.__init__(self, *args)
+#         super().__init__(*args)
+#         self.__width = 5
+#
+#     def draw_line(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self.__width}, {self.get_width()}")
+#
+#
+# class Rect(Prop):
+#     def __init__(self, sp, ep, color = "green", width =1, bg="yellow"):
+#         super().__init__(sp, ep, color, width)
+#         self.background = bg
+#
+#     def draw_rect(self):
+#         print(f"Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self.get_width()}, {self.background}")
+#
+# line = Line(Point(1, 2), Point(10, 20), "red", 2)
+# line.draw_line()
+#
+# rect = Rect(Point(30, 40), Point(70, 80))
+# rect.draw_rect()
+# print(line.__dict__)
+# # print(issubclass(Point, object))
 
 
-class UserData:
-    def __init__(self, fio, old, ps, weight):
-        self.verify_fio(fio)
-        self.verify_old(old)
+class Figure:
+    def __init__(self, color):
+        self.__color = color
 
-        self.__fio = fio
-        self.__old = old
-        self.__ps = ps
-        self.__weight = weight
+    @property
+    def color(self):
+        return self.__color
 
-    @classmethod
-    def verify_fio(cls, fio):
-        if not isinstance(fio, str):
-            raise TypeError("ФИО должно быть строкой")
-        f = fio.split()
-        if len(f) != 3:
-            raise TypeError("Неверный формат ФИО")
-        letters = "".join(re.findall(r"[a-zа-яё-]", fio, flags=re.IGNORECASE))
-        for s in f:
-            if len(s.strip(letters)) != 0:
-                raise TypeError("В ФИО можно использовать только буквы и дефис")
-
-    @classmethod
-    def verify_old(cls, old):
-        if not isinstance(old, int) or old < 18 or old > 100:
-            raise TypeError("Возраст должен быть числом в диапазоне от 18 до 100")
+    @color.setter
+    def color(self, c):
+        self.__color = c
 
 
+class Rectangle(Figure):
+    def __init__(self, width, height, color):
+        super().__init__(color)
+        self.__width = width
+        self.__height = height
+
+    @property
+    def width(self):
+        return self.__width
+
+    @width.setter
+    def width(self, w):
+        if w > 0:
+            self.__width = w
+        else:
+            raise ValueError
+
+    @property
+    def height(self):
+        return self.__height
+
+    @height.setter
+    def height(self, h):
+        if h > 0:
+            self.__height = h
+        else:
+            raise ValueError
+
+    def area(self):
+        print(f"Площадь {self.color} прямоугольника:")
+        # return self.__width * self.__height
+        return self.width * self.height
 
 
-
-p1 = UserData("Иванов Иван Иванович", 26, "1234 567890", 80.1)
+rect = Rectangle(10,20,"green")
+# print(rect._width)
+rect.width = 5
+print(rect.width)
+print(rect.height)
+print(rect.color)
+rect.color = "Красный"
+print(rect.color)
+print(rect.area())
