@@ -4811,51 +4811,171 @@ import os.path
 # line.set_coords(Point(-5,-25))
 # line.draw_line()
 
-class Point:
-    def __init__(self, x, y):
-        self.__x = x
-        self.__y = y
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+#     def is_digit(self):
+#         if not isinstance(self.__x, (int, float)) or not isinstance(self.__y, (int, float)):
+#             print("Координаты должны быть числом")
+#             return False
+#         return True
+#
+#     def is_int(self):
+#         if not isinstance(self.__x, int) or not isinstance(self.__y, int):
+#             print("Координаты должны быть целочисленным")
+#             return False
+#         return True
+#
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = "green", width: int =1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+#     def set_coords(self, sp, ep):
+#         if sp.is_digit() and ep.is_digit():
+#             self._sp = sp
+#             self._ep = ep
+#
+#     def draw(self): #Абстрактный метод
+#         raise  NotImplementedError("В дочернем классе должен быть определн мотод draw()")
+#
+# class Line(Prop):
+#
+#     def draw(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+# class Rect(Prop):
+#     pass
+#     # def draw(self):
+#     #     print(f"Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+# class Ellips(Prop):
+#     def draw(self):
+#         print(f"Рисование элипса: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#
+# firgs = list()
+# firgs.append(Line(Point(8,8), Point(10,10)))
+# firgs.append(Line(Point(80,80), Point(100,1000)))
+# firgs.append(Rect(Point(8,8), Point(10,10)))
+# firgs.append(Ellips(Point(8,8), Point(10,10)))
+#
+# for f in firgs:
+#     f.draw()
 
-    def __str__(self):
-        return f"({self.__x}, {self.__y})"
+# import math
+#
+# class Table:
+#     def __init__(self, width=None, length=None,radius=None ):
+#         if radius is None:
+#             if length is None:
+#                 self._width = self._length = width
+#             else:
+#                 self._width = width
+#                 self._length = length
+#         else:
+#             self._radius = radius
+#
+#     def calc_area(self):
+#         raise NotImplementedError("В дочернем классе должен быть метод calc_area()")
+#
+# class SqTable(Table):
+#     def calc_area(self):
+#         return self._width * self._length
+#
+# class RoundTable(Table):
+#     def calc_area(self):
+#         return round(math.pi * self._radius ** 2, 2)
+#
+# t = SqTable(20,10)
+# print(t.__dict__)
+# print(t.calc_area())
+#
+# t1 = SqTable(20)
+# print(t1.__dict__)
+# print(t1.calc_area())
+#
+# t2 = RoundTable(radius=20)
+# print(t2.__dict__)
+# print(t2.calc_area())
 
-    def is_digit(self):
-        if not isinstance(self.__x, (int, float)) or not isinstance(self.__y, (int, float)):
-            print("Координаты должны быть числом")
-            return False
-        return True
+# from abc import ABC, abstractmethod
+#
+# class Chess(ABC):
+#     def draw(self):
+#         print("Нарисовал шахматную фигуру")
+#
+#     @abstractmethod
+#     def move(self):
+#         # pass
+#         print("Вызов методы move()")
+#
+# class Horse(Chess):
+#     pass
+#     # def move(self):
+#     #     super().move()
+#     #     print("Конь походил e2e4")
+#
+#
+# # q = Chess()
+# q = Horse()
+# q.draw()
+# q.move()
 
-    def is_int(self):
-        if not isinstance(self.__x, int) or not isinstance(self.__y, int):
-            print("Координаты должны быть целочисленным")
-            return False
-        return True
+from abc import ABC, abstractmethod
 
-class Prop:
-    def __init__(self, sp: Point, ep: Point, color: str = "green", width: int =1):
-        self._sp = sp
-        self._ep = ep
-        self._color = color
-        self._width = width
+class Currency(ABC):
+    def __init__(self, value):
+        self.value = value
 
-    def set_coords(self, sp, ep):
-        if sp.is_digit() and ep.is_digit():
-            self._sp = sp
-            self._ep = ep
+    @abstractmethod
+    def convert_to_rub(self):
+        pass
 
-    def draw(self): #Абстрактный метод
-        raise  NotImplementedError("В дочернем классе должен быть определн мотод draw()")
+    def print_value(self):
+        print(self.value, end=' ')
 
-class Line(Prop):
+class Dollar(Currency):
+    rate_to_rub = 75.18
+    suffix = "USD"
 
-    def draw(self):
-        print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+    def convert_to_rub(self):
+        rub = self.value * Dollar.rate_to_rub
+        return rub
+
+    def print_value(self):
+        super().print_value()
+        print(Dollar.suffix, end=" ")
+
+class Euro(Currency):
+    rate_to_rub = 95.18
+    suffix = "EUR"
+
+    def convert_to_rub(self):
+        rub = self.value * Euro.rate_to_rub
+        return rub
+
+    def print_value(self):
+        super().print_value()
+        print(Euro.suffix, end=" ")
 
 
+d = [Dollar(5),Dollar(10),Dollar(50),Dollar(100)]
+e = [Euro(5),Euro(10),Euro(50),Euro(100)]
 
+print("*" * 30)
+for i in d:
+    i.print_value()
+    print(f"= {i.convert_to_rub():.2f} RUB")
 
-line = Line(Point("1",2), Point(10,20))
-line.draw()
-# line.set_coords(Point(5,25), Point(15,30))
-# line.draw_line()
-
+print("*" * 30)
+for i in e:
+    i.print_value()
+    print(f"= {i.convert_to_rub():.2f} RUB")
