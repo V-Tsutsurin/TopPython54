@@ -4598,59 +4598,264 @@ import os.path
 # # print(issubclass(Point, object))
 
 
-class Figure:
-    def __init__(self, color):
-        self.__color = color
+# class Figure:
+#     def __init__(self, color):
+#         self.__color = color
+#
+#     @property
+#     def color(self):
+#         return self.__color
+#
+#     @color.setter
+#     def color(self, c):
+#         self.__color = c
+#
+#
+# class Rectangle(Figure):
+#     def __init__(self, width, height, color):
+#         super().__init__(color)
+#         self.__width = width
+#         self.__height = height
+#
+#     @property
+#     def width(self):
+#         return self.__width
+#
+#     @width.setter
+#     def width(self, w):
+#         if w > 0:
+#             self.__width = w
+#         else:
+#             raise ValueError
+#
+#     @property
+#     def height(self):
+#         return self.__height
+#
+#     @height.setter
+#     def height(self, h):
+#         if h > 0:
+#             self.__height = h
+#         else:
+#             raise ValueError
+#
+#     def area(self):
+#         print(f"Площадь {self.color} прямоугольника:")
+#         # return self.__width * self.__height
+#         return self.width * self.height
+#
+#
+# rect = Rectangle(10,20,"green")
+# # print(rect._width)
+# rect.width = 5
+# print(rect.width)
+# print(rect.height)
+# print(rect.color)
+# rect.color = "Красный"
+# print(rect.color)
+# print(rect.area())
 
-    @property
-    def color(self):
-        return self.__color
 
-    @color.setter
-    def color(self, c):
-        self.__color = c
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+#     def is_digit(self):
+#         if not isinstance(self.__x, (int, float)) or not isinstance(self.__y, (int, float)):
+#             print("Координаты должны быть чимлом")
+#             return False
+#         return True
+#
+#
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = "green", width: int =1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+#     def set_coords(self, sp, ep):
+#         if sp.is_digit() and ep.is_digit():
+#             self._sp = sp
+#             self._ep = ep
+#
+#
+# class Line(Prop):
+#
+#     def draw_line(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#
+# # class Rect(Prop):
+# #     def __init__(self, sp, ep, color = "green", width =1, bg="yellow"):
+# #         super().__init__(sp, ep, color, width)
+# #         self.background = bg
+# #
+# #     def draw_rect(self):
+# #         print(f"Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self.get_width()}, {self.background}")
+#
+# line = Line(Point("1",2), Point(10,20))
+# line.draw_line()
+# line.set_coords(Point("5",25), Point(15,30))
+# line.draw_line()
+
+# class Rect:
+#     def __init__(self, w, h):
+#         self.width = w
+#         self.height = h
+#
+#     def show_rect(self):
+#         print(f"Прямоугольник:\nШирина {self.width} \nВысота {self.height}")
+#
+#
+# class RectFon(Rect):
+#     def __init__(self, w, h, bg):
+#         super().__init__(w,h)
+#         self.fon = bg
+#
+#     def show_rect(self):
+#         super().show_rect()
+#         print(f"Рамка {self.fon}")
+#
+#
+# class RectBorder(Rect):
+#     def __init__(self, w, h, b):
+#         super().__init__(w,h)
+#         self.border = b
+#
+#     def show_rect(self):
+#         super().show_rect()
+#         print(f"Граница {self.border}")
+#
+#
+#
+#
+# r1 = RectFon(400,200, "green")
+# r1.show_rect()
+#
+# r2 = RectBorder(600,300, "1px solid red")
+# r2.show_rect()
+
+# class Vector(list):
+#     def __str__(self):
+#         return ' '.join(map(str, self))
+#
+#
+# v = Vector([1, 2, 3, 4, 5, 6, 7, 8, 9])
+# print(v)
+# print(type(v))
+#
+# q = Vector((1, 2, 3, 4, 5, 6, 7, 8, 9))
+# print(q)
+
+# Перегрузка методов
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+#     def is_digit(self):
+#         if not isinstance(self.__x, (int, float)) or not isinstance(self.__y, (int, float)):
+#             print("Координаты должны быть числом")
+#             return False
+#         return True
+#
+#     def is_int(self):
+#         if not isinstance(self.__x, int) or not isinstance(self.__y, int):
+#             print("Координаты должны быть целочисленным")
+#             return False
+#         return True
+#
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = "green", width: int =1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+#     def set_coords(self, sp, ep):
+#         if sp.is_digit() and ep.is_digit():
+#             self._sp = sp
+#             self._ep = ep
+#
+#
+# class Line(Prop):
+#
+#     def draw_line(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#     def set_coords(self, sp, ep=None):
+#         if ep is None:
+#             if sp.is_int():
+#                 self._sp = sp
+#         else:
+#             if sp.is_int() and ep.is_int():
+#                 self._sp = sp
+#                 self._ep = ep
+#
+#
+#
+# line = Line(Point("1",2), Point(10,20))
+# line.draw_line()
+# # line.set_coords(Point(5,25), Point(15,30))
+# # line.draw_line()
+#
+# line.set_coords(Point(-5,-25))
+# line.draw_line()
+
+class Point:
+    def __init__(self, x, y):
+        self.__x = x
+        self.__y = y
+
+    def __str__(self):
+        return f"({self.__x}, {self.__y})"
+
+    def is_digit(self):
+        if not isinstance(self.__x, (int, float)) or not isinstance(self.__y, (int, float)):
+            print("Координаты должны быть числом")
+            return False
+        return True
+
+    def is_int(self):
+        if not isinstance(self.__x, int) or not isinstance(self.__y, int):
+            print("Координаты должны быть целочисленным")
+            return False
+        return True
+
+class Prop:
+    def __init__(self, sp: Point, ep: Point, color: str = "green", width: int =1):
+        self._sp = sp
+        self._ep = ep
+        self._color = color
+        self._width = width
+
+    def set_coords(self, sp, ep):
+        if sp.is_digit() and ep.is_digit():
+            self._sp = sp
+            self._ep = ep
+
+    def draw(self): #Абстрактный метод
+        raise  NotImplementedError("В дочернем классе должен быть определн мотод draw()")
+
+class Line(Prop):
+
+    def draw(self):
+        print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
 
 
-class Rectangle(Figure):
-    def __init__(self, width, height, color):
-        super().__init__(color)
-        self.__width = width
-        self.__height = height
-
-    @property
-    def width(self):
-        return self.__width
-
-    @width.setter
-    def width(self, w):
-        if w > 0:
-            self.__width = w
-        else:
-            raise ValueError
-
-    @property
-    def height(self):
-        return self.__height
-
-    @height.setter
-    def height(self, h):
-        if h > 0:
-            self.__height = h
-        else:
-            raise ValueError
-
-    def area(self):
-        print(f"Площадь {self.color} прямоугольника:")
-        # return self.__width * self.__height
-        return self.width * self.height
 
 
-rect = Rectangle(10,20,"green")
-# print(rect._width)
-rect.width = 5
-print(rect.width)
-print(rect.height)
-print(rect.color)
-rect.color = "Красный"
-print(rect.color)
-print(rect.area())
+line = Line(Point("1",2), Point(10,20))
+line.draw()
+# line.set_coords(Point(5,25), Point(15,30))
+# line.draw_line()
+
