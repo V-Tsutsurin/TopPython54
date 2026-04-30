@@ -5188,7 +5188,7 @@
 # # b.display2()
 # b.display1()
 
-#Множественное наследование
+# Множественное наследование
 
 # class Creature:
 #     def __init__(self, name):
@@ -5212,25 +5212,232 @@
 # c.play()
 # c.say_miay()
 
-class A:
-    def __init__(self):
-        print("Инициализатор класса A")
+# class A:
+#     # def __init__(self):
+#     #     print("Инициализатор класса A")
+#     #
+#     # def hi(self):
+#     #     print("A")
+#     pass
+#
+# class AA:
+#     # def __init__(self):
+#     #     print("Инициализатор класса AA")
+#
+#     def hi(self):
+#         print("AA")
+#
+# class B(A):
+#     # def __init__(self):
+#     #     super().__init__()
+#     #     print("Инициализатор класса B")
+#     # def hi(self):
+#     #     print("B")
+#
+#     pass
+#
+# class C(AA):
+#     # def __init__(self):
+#     #     super().__init__()
+#     #     print("Инициализатор класса C")
+#
+#     def hi(self):
+#         print("C")
+#
+# class D(B, C):
+#     # def __init__(self):
+#     #     # super().__init__()
+#     #     B.__init__(self)
+#     #     C.__init__(self)
+#     #     print("Инициализатор класса D")
+#
+#     # def hi(self):
+#     #     print("D")
+#     pass
+#
+# d = D()
+# print(D.mro())
+# # print(D.__mro__)
+# d.hi()
 
-class B(A):
-    def __init__(self):
-        super().__init__()
-        print("Инициализатор класса B")
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.x = x
+#         self.y = y
+#
+#     def __str__(self):
+#         return f"({self.x}, {self.y})"
+#
+# class Style:
+#     def __init__(self, color="red", width=1, *args):
+#         print("Иницивлизатор Style")
+#         self._color = color
+#         self._width = width
+#         super().__init__(*args)
+#
+# class Pos:
+#     def __init__(self, sp:Point, ep:Point, *args):
+#         print("Инициализатор Pos")
+#         self._sp = sp
+#         self._ep = ep
+#         # Style.__init__(*args)
+#         super().__init__(*args)
+#
+# class Line(Pos, Style):
+#     def draw(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+# l1 = Line(Point(10,10),Point(100,100), "green", 5)
+# l1.draw()
+# print(Line.__mro__)
 
-class C(A):
-    def __init__(self):
-        super().__init__()
-        print("Инициализатор класса C")
+# Миксины
 
-class D(B, C):
-    def __init__(self):
-        B.__init__(self)
-        C.__init__(self)
-        print("Инициализатор класса D")
+# class Displayer:
+#     @staticmethod
+#     def display(message):
+#         print(message)
+#
+# class LogeerMixin:
+#     def log(self, message, filename="logfile.txt"):
+#         with open(filename, 'a') as fn:
+#             fn.write(message)
+#
+#     def display(self,message):
+#         Displayer.display(message)
+#         self.log(message)
+#
+# class MySubclass(LogeerMixin, Displayer):
+#     def log(self, message, filename=""):
+#         super().log(message, filename="subclasslog.txt")
+#
+# subclass = MySubclass()
+# subclass.display("Эта строка будет отображаться и записываться в файл")
 
-d = D()
-print(D.mro())
+
+# class Goods:
+#     def __init__(self, name, weight, price):
+#         super().__init__()
+#         print("Инициализатор Goods")
+#         self.name = name
+#         self.weight = weight
+#         self.price = price
+#
+#     def print_info(self):
+#         print(f"{self.name}, {self.weight}, {self.price}")
+#
+# class MixinLog:
+#     ID = 0
+#
+#     def __init__(self):
+#         print("Инициализатор MixinLog")
+#         self.ID += 1
+#         self.id = self.ID
+#
+#     def save_log(self):
+#         print(f"{self.id} товар был продан в 00-00 часов")
+#
+# class Notebook(Goods, MixinLog):
+#     pass
+#
+# n = Notebook("HP", 3, 50000)
+# n.print_info()
+# n.save_log()
+
+# Перегрузка операторов
+
+class Clock:
+    __DAY = 86400
+
+    def __init__(self, sec: int):
+        if not isinstance(sec, int):
+            raise ValueError("Секунды должны быть целым цислом")
+        self.sec = sec
+
+    def __add__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+        return Clock(self.sec + other.sec)
+
+    def __sub__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+        return Clock(self.sec - other.sec)
+
+    def __mul__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError()
+        return Clock(self.sec * other.sec)
+
+    # def __truediv__(self, other):
+    #     if not isinstance(other, Clock):
+    #         raise ArithmeticError()
+    #     return Clock(self.sec / other.sec)
+
+#     def __floordiv__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError()
+#         return Clock(self.sec // other.sec)
+#
+#     def __mod__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError()
+#         return Clock(self.sec % other.sec)
+#
+#     def get_format_time(self):
+#         s = self.sec % 60  # секунды
+#         m = (self.sec // 60) % 60  # минуты
+#         h = (self.sec // 3600) % 24  # Часы
+#         return f"{Clock.__get_form(h)}:{Clock.__get_form(m)}:{Clock.__get_form(s)}"
+#
+#     @staticmethod
+#     def __get_form(x):
+#         return str(x) if x > 9 else '0' + str(x)
+#
+#     def __eq__(self, other):
+#         return self.sec == other.sec
+#
+#     def __ne__(self, other):
+#         # return self.sec != other.sec
+#         return not  self.__eq__(other)
+#
+#     def __gt__(self, other):
+#         return self.sec > other.sec
+#
+#
+# c1 = Clock(500)
+# print(c1.get_format_time())
+# c2 = Clock(400)
+# print(c2.get_format_time())
+# # c4 = Clock(400)
+# # print(c4.get_format_time())
+# # c1 -= c2
+# # c3 = c1 / c2
+# # print(c1.get_format_time())
+# # print(c3.get_format_time())
+# # if c2 == c1:
+# #     print("Время равно")
+# # if c2 != c1:
+# #     print("Время не равно")
+#
+# # if c2 > c1:
+# #     print("Время первое больше")
+# if c2 < c1:
+#     print("Время второе больше")
+
+
+class Student:
+    def __init__(self,name, marks):
+        self.name = name
+        self.marks = list(marks)
+
+    def __getitem__(self, item):
+        if 0 <= item <= len(self.marks):
+            return self.marks[item]
+        else:
+            raise IndexError("Неверный индекс")
+
+s1 = Student("Ivan",[5,4,5,4,2,3])
+
+print(s1[2])
+print(s1[9])
