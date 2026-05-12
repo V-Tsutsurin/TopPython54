@@ -5761,27 +5761,364 @@ import math
 # c2()
 # c2()
 
-class StripChars:
-    def __init__(self, chars):
-        self.__chars = chars
+# class StripChars:
+#     def __init__(self, chars):
+#         self.__chars = chars
+#
+#     def __call__(self, *args, **kwargs):
+#         if not isinstance(args[0],str):
+#             raise ValueError("Аргумент должен быть строкой")
+#         return args[0].strip(self.__chars)
+#
+#
+# s1 = StripChars("!@#$%^&*:; ")
+# print(s1("  %^&Hello World:&^$#   "))
+#
+#
+# def strip_string(chars):
+#     def wrap(string):
+#         if not isinstance(string,str):
+#             raise ValueError("Аргумент должен быть строкой")
+#         return string.strip(chars)
+#     return wrap
+#
+#
+# s2 = StripChars("!@#$%^&*:; ")
+# print(s2("  %^&Hello World:&^$#   "))
 
-    def __call__(self, *args, **kwargs):
-        if not isinstance(args[0],str):
-            raise ValueError("Аргумент должен быть строкой")
-        return args[0].strip(self.__chars)
+# class MyDecorator:
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self, a, b):
+#         st1 = "Перед функцией"
+#         st2 = "После функциеи"
+#         res = st1 + str(self.func(a, b)) + st2
+#         return res
+#
+#
+#
+# @MyDecorator
+# def func1(a, b):
+#     return a + b
+#
+#
+# print(func1(2,5))
+
+# class Power:
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self, a, b):
+#         res = self.func(a,b)
+#         return res ** 2
+#
+# @Power
+# def func1(a, b):
+#     return a * b
+#
+#
+# print(func1(2, 3))
+
+# class MyDecorator:
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self, *args, **kwargs):
+#         st1 = "Перед функцией"
+#         st2 = "После функциеи"
+#         res = st1 + str(self.func(*args, **kwargs)) + st2
+#         return res
+#
+#
+# @MyDecorator
+# def func1(a, b):
+#     return a * b
+#
+#
+# @MyDecorator
+# def func2(a, b, c):
+#     return a * b * c
+#
+#
+# @MyDecorator
+# def func3(a, b, c):
+#     return a + b + c
 
 
-s1 = StripChars("!@#$%^&*:; ")
-print(s1("  %^&Hello World:&^$#   "))
+# print(func1(2, 5))
+# print(func2(2, 5, 2))
+# print(func3(2, 5, 2))
 
 
-def strip_string(chars):
-    def wrap(string):
-        if not isinstance(string,str):
-            raise ValueError("Аргумент должен быть строкой")
-        return string.strip(chars)
-    return wrap
+# class MyDecorator:
+#     def __init__(self, arg):
+#         self.name = arg
+#
+#     def __call__(self, func):
+#         def wrap(a,b):
+#             print("Перед функцией")
+#             print(self.name)
+#             func(a, b)
+#             print("После функциеи")
+#         return wrap
+#
+#
+#
+# @MyDecorator('test')
+# def func1(a, b):
+#     print(a + b)
+#
+#
+# func1(2,5)
+
+# class Power:
+#     def __init__(self, n):
+#         self.n = n
+#
+#     def __call__(self, func):
+#         def wrap(a, b):
+#             return func(a,b) ** self.n
+#         return wrap
+#
+# @Power(9)
+# def func1(a, b):
+#     return a * b
+#
+#
+# print(func1(2, 3))
 
 
-s2 = StripChars("!@#$%^&*:; ")
-print(s2("  %^&Hello World:&^$#   "))
+# def dec(fn):
+#     def wrap(*args, **kwargs):
+#         print('*' * 20)
+#         fn(*args, **kwargs)
+#         print('*' * 20)
+#
+#     return wrap
+#
+# class Person:
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+#     # @staticmethod
+#     # def dec(fn):
+#     #     def wrap(*args, **kwargs):
+#     #         print('*' * 20)
+#     #         fn(*args, **kwargs)
+#     #         print('*' * 20)
+#     #     return wrap
+#
+#
+#     @dec
+#     def info(self):
+#         print(f"{self.name} {self.surname}")
+#
+# p1 = Person("Петр", "Иванов")
+# p1.info()
+
+# def decorator(cls):
+#     class Wrapper(cls):
+#         def dubler(self, value):
+#             return value * 2
+#     return Wrapper
+#
+#
+# @decorator
+# class ActualClass:
+#     def __init__(self):
+#         print("Инициализатор ActualClass")
+#
+#     def quad(self, value):
+#         return value ** 4
+#
+#
+# obj = ActualClass()
+# print(obj.quad(4))
+# print(obj.dubler(4))
+
+
+# class Person:
+#     def __init__(self, name, surname):
+#         self.__name = name
+#         self.__surname = surname
+#
+#     @property
+#     def name(self):
+#         return self.__name
+#
+#     @name.setter
+#     def name(self, value):
+#         self.__name = value
+#
+#     @property
+#     def surname(self):
+#         return self.__surname
+#
+#     @surname.setter
+#     def surname(self, value):
+#         self.__surname = value
+#
+# p1 = Person("Петр", "Иванов")
+
+#
+# class StringD:
+#     def __init__(self, value=None):
+#         if value:
+#             self.set(value)
+#
+#     def get(self):
+#         return self.__value
+#
+#     def set(self, value):
+#         self.__value = value
+#
+#
+# class Person:
+#     def __init__(self, name, surname):
+#         self.name = StringD(name)
+#         self.surname = StringD(surname)
+#
+#     # @property
+#     # def name(self):
+#     #     return self.__name
+#     #
+#     # @name.setter
+#     # def name(self, value):
+#     #     self.__name = value
+#     #
+#     # @property
+#     # def surname(self):
+#     #     return self.__surname
+#     #
+#     # @surname.setter
+#     # def surname(self, value):
+#     #     self.__surname = value
+#
+#
+# p1 = Person("Петр", "Иванов")
+# print(p1.__dict__)
+# print(p1.name.get())
+# p1.name.set("Семен")
+# print(p1.name.get())
+# print(p1.__dict__)
+
+# Дескрипторы (__get__, __set__, __delete__, __set_name__)
+
+# class ValidString:
+#     def __set_name__(self, owner, name):
+#         self.__name = name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.__name]
+#
+#     def __set__(self, instance, value):
+#         if not  isinstance(value, str):
+#             raise  ValueError(f"{self.__name} должно быть строкой")
+#         instance.__dict__[self.__name] = value
+#
+#
+# class Person:
+#     name = ValidString()
+#     surname = ValidString()
+#
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+#
+#
+# p = Person("Петр", "Иванов")
+# print(p.name)
+# print(p.surname)
+# print(p.__dict__)
+#
+# p.name = "Виктор"
+# print(p.name)
+
+# Виды дескрипторов
+# non-data descriptors (дескрипторы не данных) - дескрипторы которые определили только __get__. Они только отдают значения, нельзя ничего сохранить.
+# Например staticmethod(), classmethod()
+# data descriptor (дескрипторы данных) - если обьект отпределяет сразу __get__, __set__  и другие. Например property()
+
+#
+# class Integer:
+#     @classmethod
+#     def verify_cords(cls, cords):
+#         if not isinstance(cords, int):
+#             raise TypeError(f"Координаты {cords} должны быть целым числом")
+#
+#     def __set_name__(self, owner, name):
+#         self.name = "_" + name
+#
+#     def __get__(self, instance, owner):
+#         # return instance.__dict__[self.name]
+#         return getattr(instance, self.name)
+#
+#     def __set__(self, instance, value):
+#         self.verify_cords(value)
+#         # instance.__dict__[self.name] = value
+#         setattr(instance, self.name, value)
+#
+#
+# class Point3D:
+#     x = Integer()
+#     y = Integer()
+#     z = Integer()
+#
+#     def __init__(self, x, y, z):
+#         self.x = x
+#         self.y = y
+#         self.z = z
+#
+#
+# p1 = Point3D(1, 2, 3)
+# print(p1.__dict__)
+
+# Метаклассы
+
+# a = 5
+#
+# print(type(a))
+# print(type(int))
+
+# class MyList(list):
+#     def get_length(self):
+#         return len(self)
+
+# MyList = type(
+#     'MyList',
+#     (list,),
+#     dict(get_length=lambda self: len(self))
+# )
+#
+#
+# lst = MyList()
+# lst.append(5)
+# lst.append(7)
+# lst[0] = 3
+# print(lst, lst.get_length())
+
+class MyMetaClass(type):
+    def __new__(cls, *args, **kwargs):
+        print("Создание нового обьекта", args[0])
+        return super(MyMetaClass, cls).__new__(cls, *args, **kwargs)
+
+    def __init__(cls, *args, **kwargs):
+        print("Инициализатор класса", args[0])
+        super(MyMetaClass, cls).__init__(*args, **kwargs)
+
+
+class Student(metaclass=MyMetaClass):
+    def __init__(self, name):
+        self.name = name
+
+    def get_name(self):
+        return self.name
+
+stud = Student("Иван")
+print("Имя студента", stud.get_name())
+print("Тип обьекта Student", type(stud))
+print("Тип класса Student", type(Student))
+
