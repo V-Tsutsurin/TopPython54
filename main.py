@@ -5674,9 +5674,6 @@
 # print(len(p))
 
 
-import math
-
-
 # class Point:
 #     __slots__ = ('x', 'y', "__length")
 #
@@ -6100,25 +6097,136 @@ import math
 # lst[0] = 3
 # print(lst, lst.get_length())
 
-class MyMetaClass(type):
-    def __new__(cls, *args, **kwargs):
-        print("Создание нового обьекта", args[0])
-        return super(MyMetaClass, cls).__new__(cls, *args, **kwargs)
+# class MyMetaClass(type):
+#     def __new__(cls, *args, **kwargs):
+#         print("Создание нового обьекта", args[0])
+#         return super(MyMetaClass, cls).__new__(cls, *args, **kwargs)
+#
+#     def __init__(cls, *args, **kwargs):
+#         print("Инициализатор класса", args[0])
+#         super(MyMetaClass, cls).__init__(*args, **kwargs)
+#
+#
+# class Student(metaclass=MyMetaClass):
+#     def __init__(self, name):
+#         self.name = name
+#
+#     def get_name(self):
+#         return self.name
+#
+# stud = Student("Иван")
+# print("Имя студента", stud.get_name())
+# print("Тип обьекта Student", type(stud))
+# print("Тип класса Student", type(Student))
 
-    def __init__(cls, *args, **kwargs):
-        print("Инициализатор класса", args[0])
-        super(MyMetaClass, cls).__init__(*args, **kwargs)
+# Создание модулей
 
 
-class Student(metaclass=MyMetaClass):
-    def __init__(self, name):
-        self.name = name
+import math
 
-    def get_name(self):
-        return self.name
+#
+# print(math.pi)
 
-stud = Student("Иван")
-print("Имя студента", stud.get_name())
-print("Тип обьекта Student", type(stud))
-print("Тип класса Student", type(Student))
+# import geometry.rect
+# import geometry.sq
+# import geometry.trian
+
+# from geometry import rect, sq, trian
+# import  geometry
+# from operator_geom import *
+#
+# r1 = rect.Rectangle(1, 2)
+# r2 = rect.Rectangle(3, 4)
+#
+# s1 = sq.Square(10)
+# s2 = sq.Square(20)
+#
+# t1 = trian.Triangle(1, 2, 3)
+# t2 = trian.Triangle(4, 5, 6)
+#
+# shape = [r1, r2, s1, s2, t1, t2]
+# for g in shape:
+#     print(g.get_perimeter())
+
+# from car import electrocar
+#
+#
+# def main():
+#     e_car = electrocar.ElectroCar("Tesla", "T", 2018, 99000)
+#     e_car.show_car()
+#     e_car.description_battery()
+#
+# if __name__ == "__main__":
+#     main()
+
+from math import pi
+
+
+class Rectangle:
+    def __init__(self, l, h):
+        self.l = l
+        self.h = h
+
+    def get_rect_perimeter(self):
+        res = self.l * 2 + self.h * 2
+        print(f"Периметр прямоугольника {res}")
+        return res
+
+    def get_rect_area(self):
+        res = self.l * self.h
+        print(f"Площадь прямоугольника {res}")
+        return res
+
+    def print_rect(self):
+        print(f"Стороны прямоугольника {self.l} {self.h}")
+        return {self.l, self.h}
+
+
+class Circle:
+    def __init__(self, r):
+        self.r = r
+
+    def get_circle_circumference(self):
+        res = 2 * pi * self.r
+        print(f"Длинна окружности {round(res, 2)}")
+        return res
+
+    def get_circle_area(self):
+        res = round(pi * self.r ** 2, 2)
+        print(f"Площадь круга {res}")
+        return res
+
+    def print_circle(self):
+        print(f"Радиус круга {self.r}")
+        return self.r
+
+
+class Cylinder(Rectangle, Circle):
+    def __init__(self, r, h):
+        Circle.__init__(self, r)
+        Rectangle.__init__(self, self.get_circle_circumference(), h)
+
+    def get_volume(self):
+        res = self.get_circle_area() * self.h
+        print(f"Объем цилиндра {res}")
+        return res
+
+    def print_cylinder(self):
+        print(f"Радиус основания {self.r}, высота {self.h}")
+
+
+circles = [Circle(2), Circle(4), Circle(7), Circle(5), Circle(9), Circle(1), Circle(3), Circle(13), Circle(8)]
+rect = [Rectangle(2, 3), Rectangle(4, 8), Rectangle(9, 9), Rectangle(7, 3)]
+cylinders = [Cylinder(2, 3), Cylinder(5, 6), Cylinder(7, 8)]
+
+cirle_max_s = max(circles, key=lambda c: c.get_circle_area())
+rect_min_p = min(rect, key=lambda r: r.get_rect_perimeter())
+cylinders_v = list(map(lambda c: c.get_volume(), cylinders))
+cylinders_v_avr = sum(cylinders_v) / len(cylinders_v)
+
+
+print("*" * 20)
+print(f'Окружность с наибольшей площадью: {cirle_max_s.print_circle()} = {cirle_max_s.get_circle_area()}')
+print(f'Прямоугольник с наименьшим периметром {rect_min_p.print_rect()} = {rect_min_p.get_rect_perimeter()}')
+print(f'Средний объем цилиндров {round(cylinders_v_avr, 2)}')
 
