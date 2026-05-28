@@ -6347,7 +6347,7 @@
 # print(new_reader.read_line())
 # print(new_reader.read_line())
 # print(new_reader.read_line())
-
+from os import write
 
 # data = {
 #     'first_name': 'Ivan',
@@ -6632,10 +6632,167 @@ todos = json.loads(response.text)
 
 # CSV
 
-import  csv
+import csv
 
-with open("data.csv") as r_file:
-    file_reader = csv.reader(r_file, delimiter=";")
+# csv.reader
+# csv.writer
+# csv.DictReader
+# csv.DictWriter
 
-    for row in file_reader:
-        print(row)
+# with open("data.csv") as r_file:
+#     file_reader = csv.reader(r_file, delimiter=";")
+#     count = 0
+#     for row in file_reader:
+#         # print(row)
+#         if count == 0:
+#             print(f"Файл содержит столбцы: {', '.join(row)}")
+#         else:
+#             print(f"                       {row[0]}-{row[1]}. Возраст:{row[2]} лет")
+#         count +=1
+#     print(f"В файле {count} строки")
+
+# with open("data.csv") as r_file:
+#     field_name = ["Имя", "Должность", "Возраст"]
+#     file_reader = csv.DictReader(r_file, delimiter=";", fieldnames=field_name)
+#     count = 0
+#     for row in file_reader:
+#         # print(row)
+#         if count == 0:
+#             print(f"Файл содержит столбцы: {', '.join(row)}")
+#         print(f"{row["Имя"]}-{row["Должность"]}. Возраст:{row["Возраст"]} лет")
+#         count += 1
+#     print(f"В файле {count} строки")
+
+# with open("student.csv", "w") as f:
+#     # writer = csv.writer(f, delimiter=";")
+#     writer = csv.writer(f, delimiter=";", lineterminator="\n")
+#
+#     writer.writerow(["Имя", "Группа", "Возраст"])
+#     writer.writerow(["Паша", "9", "16"])
+#     writer.writerow(["Даша", "7", "14"])
+#     writer.writerow(["Игнат", "11", "12"])
+
+
+# data = [['hostname', 'vendor', 'model', 'location'],
+#         ['sw1', 'Cisco', '3750', 'London, Best str'],
+#         ['sw2', 'Cisco', '3850', 'Liverpool, Better str'],
+#         ['sw3', 'Cisco', '3650', 'Liverpool, Better str'],
+#         ['sw4', 'Cisco', '3650', 'London, Best str']]
+#
+# with open("data_new.csv", 'w') as f:
+#     # writer = csv.writer(f, delimiter=",", lineterminator="\n")
+#     writer = csv.writer(f, delimiter=",", lineterminator="\n",quoting=csv.QUOTE_NONNUMERIC)
+#
+#     # for row in data:
+#     #     writer.writerow(row)
+#     writer.writerows(data)
+#
+# with open("data_new.csv") as f:
+#     print(f.read())
+
+# with open("student1.csv", 'w') as f:
+#     names = ["Имя", "Возраст"]
+#     file_writer = csv.DictWriter(f, delimiter=";", lineterminator="\r", fieldnames=names)
+#     file_writer.writeheader()
+#     file_writer.writerow({"Имя": "Саша", "Возраст": "10"})
+#     file_writer.writerow({"Имя": "Паша", "Возраст": "12"})
+#     file_writer.writerow({"Возраст": "11", "Имя": "Игорь"})
+
+# data = [{
+#     'hostname': 'sw1',
+#     'location': 'London',
+#     'model': '3750',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw2',
+#     'location': 'Liverpool',
+#     'model': '3850',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw3',
+#     'location': 'Liverpool',
+#     'model': '3650',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw4',
+#     'location': 'London',
+#     'model': '3650',
+#     'vendor': 'Cisco'
+# }]
+#
+# with open("hosts.csv", "w") as f:
+#     writer = csv.DictWriter(f, fieldnames=list(data[0].keys()),delimiter=";", lineterminator="\r")
+#     writer.writeheader()
+#     for d in data:
+#         writer.writerow(d)
+
+# from bs4 import BeautifulSoup
+#
+# f = open("index.html").read()
+# soup = BeautifulSoup(f, "html.parser")
+# row = soup.find("div", class_="name").text
+# row = soup.find_all("div", class_="name")
+# row = soup.find_all("div", class_="row")[1].find("div", class_="links")
+# row = soup.find_all("div", class_="row")[1].find("div", class_="links").text
+
+# row = soup.find("div", {"class": "name"})
+# row = soup.find("div", {"data-set": "salary"})
+
+# row  = soup.find("div", text="Alena").parent
+# row  = soup.find("div", text="Alena").find_parent(class_="row")
+
+# row  = soup.find("div", id="whois1")
+# row  = soup.find("div", id="whois2").find_next_sibling()
+# row  = soup.find("div", id="whois2").find_previous_sibling()
+#
+# print(row)
+
+# from bs4 import BeautifulSoup
+#
+# def get_copywriter(tag):
+#     whois = tag.find("div", class_="whois").text
+#     if "Copywriter" in whois:
+#         return tag
+#     return None
+#
+# f = open("index.html", encoding="utf-8").read()
+# soup = BeautifulSoup(f, "html.parser")
+# row = soup.find_all("div", class_="row")
+# # print(row)
+#
+# copywriter = []
+# for i in row:
+#     cw = get_copywriter(i)
+#     if cw:
+#         copywriter.append(cw)
+#
+# print(copywriter)
+#
+# from bs4 import BeautifulSoup
+# import re
+#
+# def get_salary(s):
+#     # pattern = r"\d+"
+#     pattern = r"[0-9]+"
+#     # res = re.findall(pattern, s)[0]
+#     res = re.search(pattern, s).group()
+#     print(res)
+#
+# f = open("index.html", encoding="utf-8").read()
+# soup = BeautifulSoup(f, "html.parser")
+# salary = soup.find_all("div",{"data-set":"salary"})
+# # print(salary)
+#
+# for i in salary:
+#     get_salary(i.text)
+#     # print(i.text)
+
+
+from bs4 import BeautifulSoup
+import requests
+
+req = requests.get("https://ru.wordpress.org/")
+# req.encoding = "utf-8"
+# print(req.headers["Content-Type"])
+# print(req.content)
+print(req.text)
