@@ -6978,14 +6978,83 @@ import csv
 # if __name__ == "__main__":
 #     run()
 
+# import sqlite3 as sq
+#
+# with sq.connect("profile.db") as con:
+#     cur = con.cursor()
+#     cur.execute("DROP TABLE users")
+#     # cur.execute("""CREATE TABLE IF NOT EXISTS users(
+#     # id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     # name TEXT NOT NULL,
+#     # summa REAL,
+#     # date TEXT
+#     # )""")
+
+
+
+# import sqlite3 as sq
+#
+# with sq.connect("profile.db") as con:
+#     cur = con.cursor()
+#     # cur.execute("""
+#     # CREATE TABLE IF NOT EXISTS persons(
+#     # id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     # name TEXT NOT NULL,
+#     # phone BLOB NOT NULL DEFAULT '+79000000000',
+#     # age INTEGER NOT NULL CHECK(age > 0 AND age < 120),
+#     # email TEXT UNIQUE
+#     # )
+#     # """)
+
+    # cur.execute("""
+    # ALTER TABLE persons
+    # RENAME TO person_table
+    # """)
+
+    # cur.execute("""
+    # ALTER TABLE person_table
+    # ADD COLUMN address TEXT
+    # """)
+
+    # cur.execute("""
+    # ALTER TABLE person_table
+    # DROP COLUMN address
+    # """)
+
+    # cur.execute("""
+    # ALTER TABLE person_table
+    # ADD COLUMN address TEXT
+    # """)
+
+    # cur.execute("""
+    # ALTER TABLE person_table
+    # RENAME COLUMN address TO home_adress
+    # """)
+
+    # cur.execute("""
+    # DROP TABLE person_table
+    # """)
+
+
 import sqlite3 as sq
 
 with sq.connect("profile.db") as con:
     cur = con.cursor()
-    cur.execute("DROP TABLE users")
-    # cur.execute("""CREATE TABLE IF NOT EXISTS users(
+    # cur.execute("""
+    # CREATE TABLE IF NOT EXISTS persons(
     # id INTEGER PRIMARY KEY AUTOINCREMENT,
     # name TEXT NOT NULL,
-    # summa REAL,
-    # date TEXT
-    # )""")
+    # phone BLOB NOT NULL DEFAULT '+79000000000',
+    # age INTEGER NOT NULL CHECK(age > 0 AND age < 120),
+    # email TEXT UNIQUE
+    # )
+    # """)
+
+#     cur.execute("""
+# INSERT INTO persons
+# VALUES (1, "DIMITRY", '+79211234567', 29, 'dimitry88@gmail.com')
+# """)
+    cur.execute("""
+INSERT INTO persons(email, name, age)
+VALUES ('anton@gamil.com', 'Антон', 44)
+""")
