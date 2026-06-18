@@ -6576,14 +6576,14 @@ from os import write
 # # # print(st1.average_mark())
 
 # API
-
-import requests
-import json
-
-from urllib3 import request
-
-response = requests.get("https://jsonplaceholder.typicode.com/todos")
-todos = json.loads(response.text)
+#
+# import requests
+# import json
+#
+# from urllib3 import request
+#
+# response = requests.get("https://jsonplaceholder.typicode.com/todos")
+# todos = json.loads(response.text)
 
 # print(todos[:10])
 # print(type(todos))
@@ -6991,7 +6991,6 @@ import csv
 #     # )""")
 
 
-
 # import sqlite3 as sq
 #
 # with sq.connect("profile.db") as con:
@@ -7006,55 +7005,87 @@ import csv
 #     # )
 #     # """)
 
-    # cur.execute("""
-    # ALTER TABLE persons
-    # RENAME TO person_table
-    # """)
+# cur.execute("""
+# ALTER TABLE persons
+# RENAME TO person_table
+# """)
 
-    # cur.execute("""
-    # ALTER TABLE person_table
-    # ADD COLUMN address TEXT
-    # """)
+# cur.execute("""
+# ALTER TABLE person_table
+# ADD COLUMN address TEXT
+# """)
 
-    # cur.execute("""
-    # ALTER TABLE person_table
-    # DROP COLUMN address
-    # """)
+# cur.execute("""
+# ALTER TABLE person_table
+# DROP COLUMN address
+# """)
 
-    # cur.execute("""
-    # ALTER TABLE person_table
-    # ADD COLUMN address TEXT
-    # """)
+# cur.execute("""
+# ALTER TABLE person_table
+# ADD COLUMN address TEXT
+# """)
 
-    # cur.execute("""
-    # ALTER TABLE person_table
-    # RENAME COLUMN address TO home_adress
-    # """)
+# cur.execute("""
+# ALTER TABLE person_table
+# RENAME COLUMN address TO home_adress
+# """)
 
-    # cur.execute("""
-    # DROP TABLE person_table
-    # """)
+# cur.execute("""
+# DROP TABLE person_table
+# """)
 
 
-import sqlite3 as sq
-
-with sq.connect("profile.db") as con:
-    cur = con.cursor()
-    # cur.execute("""
-    # CREATE TABLE IF NOT EXISTS persons(
-    # id INTEGER PRIMARY KEY AUTOINCREMENT,
-    # name TEXT NOT NULL,
-    # phone BLOB NOT NULL DEFAULT '+79000000000',
-    # age INTEGER NOT NULL CHECK(age > 0 AND age < 120),
-    # email TEXT UNIQUE
-    # )
-    # """)
+# import sqlite3 as sq
+#
+# with sq.connect("profile.db") as con:
+#     cur = con.cursor()
+#     # cur.execute("""
+#     # CREATE TABLE IF NOT EXISTS persons(
+# id INTEGER PRIMARY KEY AUTOINCREMENT,
+# name TEXT NOT NULL,
+# phone BLOB NOT NULL DEFAULT '+79000000000',
+# age INTEGER NOT NULL CHECK(age > 0 AND age < 120),
+# email TEXT UNIQUE
+# )
+# """)
 
 #     cur.execute("""
 # INSERT INTO persons
 # VALUES (1, "DIMITRY", '+79211234567', 29, 'dimitry88@gmail.com')
 # """)
+#     cur.execute("""
+# INSERT INTO persons(email, name, age)
+# VALUES ('anton@gamil.com', 'Антон', 44)
+# """)
+
+import sqlite3 as sq
+
+with sq.connect("db_4.db") as con:
+    cur = con.cursor()
     cur.execute("""
-INSERT INTO persons(email, name, age)
-VALUES ('anton@gamil.com', 'Антон', 44)
-""")
+    SELECT *
+    FROM Ware
+    ORDER BY Price DESC
+    LIMIT 2, 5
+    """)
+
+    # res = cur.fetchall()
+    # print(res)
+
+    # res1 = cur.fetchone()
+    # print(res1)
+    #
+    # res2 = cur.fetchmany(2)
+    # print(res2)
+    #
+    # res3 = cur.fetchmany(10)
+    # print(res3)
+
+    # res4 = cur.fetchall()
+    # print(res4)
+    #
+    # for res in res4:
+    #     print(res)
+
+    for res in cur:
+        print(res)
