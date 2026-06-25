@@ -7058,16 +7058,16 @@ import csv
 # VALUES ('anton@gamil.com', 'Антон', 44)
 # """)
 
-import sqlite3 as sq
-
-with sq.connect("db_4.db") as con:
-    cur = con.cursor()
-    cur.execute("""
-    SELECT *
-    FROM Ware
-    ORDER BY Price DESC
-    LIMIT 2, 5
-    """)
+# import sqlite3 as sq
+#
+# with sq.connect("db_4.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     SELECT *
+#     FROM Ware
+#     ORDER BY Price DESC
+#     LIMIT 2, 5
+#     """)
 
     # res = cur.fetchall()
     # print(res)
@@ -7086,6 +7086,73 @@ with sq.connect("db_4.db") as con:
     #
     # for res in res4:
     #     print(res)
+    #
+    # for res in cur:
+    #     print(res)
 
-    for res in cur:
-        print(res)
+
+import sqlite3 as sq
+
+cars =[
+    ('BMW', 9000000),
+    ('Honda', 5500000),
+    ('Citroen', 6250000),
+    ('Daewoo', 2000000),
+    ('Chevrolet', 5852000),
+    ('TANK', 7110000)
+]
+
+
+# with sq.connect("cars.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS car(
+#         cars_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         model TEXT,
+#         price INTEGER
+#     )""")
+
+    # cur.execute("INSERT INTO car VALUES(1, 'Renault', 1500000)")
+    # cur.execute("INSERT INTO car VALUES(2, 'Volvo', 1800000)")
+    # cur.execute("INSERT INTO car VALUES(3, 'Mercedes', 2500000)")
+    # cur.execute("INSERT INTO car VALUES(4, 'Bentley', 80000000)")
+    # cur.execute("INSERT INTO car VALUES(5, 'Audy', 3400000)")
+    # cur.execute("INSERT INTO car VALUES(6, 'KIA', 1750000)")
+    # cur.execute("INSERT INTO car VALUES(7, 'Volkswagen', 2000000)")
+
+    # for car in cars:
+    #     cur.execute("INSERT INTO car VALUES(NULL, ?, ?)", car)
+
+    # cur.executemany("INSERT INTO car VALUES(NULL, ?, ?)", cars)
+
+    # cur.execute("UPDATE car SET price = :Price WHERE model LIKE 'B%'", {'Price':0})
+
+    # cur.executescript("""
+    # DELETE FROM car WHERE model LIKE 'B%';
+    # UPDATE car SET price = price + 55555
+    # """)
+
+
+con = None
+try:
+    con = sq.connect("cars.db")
+    cur = con.cursor()
+    cur.executescript("""
+    CREATE TABLE IF NOT EXISTS car(
+        cars_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        model TEXT,
+        price INTEGER
+    );
+    BEGIN;
+    INSERT INTO car VALUES(NULL, 'Nissan', 3333333);
+    UPDATE car2 SET price = price + 111;
+    """)
+    con.commit()
+except sq.Error() as e:
+    if con:
+        con.rollback()
+    print("Ошибка выполнения запроса")
+
+finally:
+    if con:
+        con.close()
