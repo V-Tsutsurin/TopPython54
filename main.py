@@ -7431,7 +7431,7 @@
 #     for it in session.query(Student).filter(text("surname like 'В%'")).order_by(text("name, id desc")):
 #         print(it)
 
-from jinja2 import Template
+# from jinja2 import Template
 
 # name = "Вася"
 # age = 28
@@ -7561,18 +7561,98 @@ from jinja2 import Template
 # print(msg)
 
 
+# persons = [
+#     {"name": "Алексей", "year": 19, "height": 1.70},
+#     {"name": "Никита", "year": 25, "height": 1.75},
+#     {"name": "Виталий", "year": 38, "height": 1.98},
+# ]
+#
+# tpl = """
+# {%- for u in user -%}
+#     {% filter upper %} {{ u.name }} {% endfilter %} {% filter string %} {{u.year}} - {{u.height}} {% endfilter %}
+# {% endfor -%}
+# """
+#
+# tm = Template(tpl)
+# msg = tm.render(user=persons)
+# print(msg)
+
+
+# html ="""
+# {%- macro input(name, value='', type='text', size=20) -%}
+#     <input type="{{ type }}" name="{{ name }}" value="{{ value }}" size="{{ size }}">
+# {%- endmacro %}
+#
+# <p>{{ input('username') }}</p>
+# <p>{{ input('email') }}</p>
+# <p>{{ input('password') }}</p>
+# """
+#
+# tm = Template(html)
+# msg = tm.render()
+# print(msg)
+
+# html ="""
+# {%- macro input(name, placeholder, type='text') -%}
+#     <input type="{{ type }}"  name="{{ name }}" placeholder="{{ placeholder }}" >
+# {%- endmacro %}
+#
+# <p>{{ input('firstname', "Имя") }}</p>
+# <p>{{ input('lastname', "Фамилия") }}</p>
+# <p>{{ input('addres', "Адрес") }}</p>
+# <p>{{ input('phone', "Телефон", 'tel') }}</p>
+# <p>{{ input('email', "Почта", "email") }}</p>
+# """
+#
+# tm = Template(html)
+# msg = tm.render()
+# print(msg)
+
+
+
+# persons = [
+#     {"name": "Алексей", "year": 19, "height": 1.70},
+#     {"name": "Никита", "year": 25, "height": 1.75},
+#     {"name": "Виталий", "year": 38, "height": 1.98},
+# ]
+#
+# html = """
+# {%- macro list_users(list_of_user)  -%}
+#     <ul>
+#         {% for u in list_of_user -%}
+#             <li>{{ u.name }} {{ caller(u) }}</li>
+#         {% endfor %}
+#     </ul>
+# {%-endmacro%}
+#
+# {%- call(user) list_users(users) -%}
+#     <ul>
+#         <li>age: {{ user.year }}</li>
+#         <li>height: {{ user.height }}</li>
+#     </ul>
+# {%- endcall -%}
+# """
+#
+# tm = Template(html)
+# msg = tm.render(users=persons)
+# print(msg)
+
+
+
+from jinja2 import Environment, FileSystemLoader
+
 persons = [
     {"name": "Алексей", "year": 19, "height": 1.70},
     {"name": "Никита", "year": 25, "height": 1.75},
     {"name": "Виталий", "year": 38, "height": 1.98},
 ]
 
-tpl = """
-{%- for u in user -%}
-    {% filter upper %} {{ u.name }} {% endfilter %} {% filter string %} {{u.year}} - {{u.height}} {% endfilter %}
-{% endfor -%}
-"""
+menu = ["Культура", "Спорт", "Наука", "Техника"]
 
-tm = Template(tpl)
-msg = tm.render(user=persons)
+file_loader = FileSystemLoader('templates')
+env = Environment(loader=file_loader)
+
+tm = env.get_template('about.html')
+msg = tm.render(list_table=menu)
+
 print(msg)

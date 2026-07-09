@@ -1,17 +1,14 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8">
     <title>Главная страница</title>
-  </head>
-  <body>
-    <select name="cities">
-      <option value="">Москва</option>
-      <option value="">СПБ</option>
-      <option value="">Казань</option>
-      <option value="">Яролославль</option>
-      <option value="">Воронеж</option>
-      <option value="">Архангельск</option>
-    </select>
-  </body>
+</head>
+<body>
+<ul>
+    {% for u in users %}
+        <li>{{ u.name }}</li>
+    {% endfor %}
+</ul>
+</body>
 </html>
